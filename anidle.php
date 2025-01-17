@@ -31,7 +31,7 @@
             <div class="image">
                 <a href="index.php"><img src="images/logo.jpg"></a>
             </div>
-            <h1>Anidle</h1>
+            <h1>Zwinidle</h1>
             <div>
                 <a href="compte.php"><img src="images/utilisateur.png" alt="compte"></a>
             </div>
@@ -62,13 +62,14 @@
             <button class="photo fondDesac">Affiche</button>
         </div>
         <h2>Guess <span>0</span> / 20</h2>
+        <div class="score">
+            <p>Max serie : <span id="score">0</span>
+        </div>
         <form class="proposition">
             <input type="text" id="iptJoueur" name="iptJoueur" placeholder="Entrer un anime" autofocus>
             <button id="btnValid">Valider</button>
         </form>
-        <div class="score desac">
-            <p>Votre score : <span id="score">0</span>
-        </div>
+        
         <p class="faux" id="animeDejaMis"></p>
             <table class="tableau desac">
                     <thead>

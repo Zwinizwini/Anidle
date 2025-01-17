@@ -17,7 +17,7 @@ require_once(__DIR__ . '/mysql/connect.php');
             <div class="image">
                 <a href="index.php"><img src="images/logo.jpg"></a>
             </div>
-            <h1>Anidle</h1>
+            <h1>Zwinidle</h1>
             <div>
                 <a href="compte.php"><img src="images/utilisateur.png" alt="compte"></a>
             </div>

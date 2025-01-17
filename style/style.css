@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik+Mono+One&display=swap");
+
 * {
     margin: 0px;
     font-family: "Monstserrat", sans-serif;
+}
+
+h1 {
+    font-family: "Rubik Mono One", serif;
 }
 
 body {

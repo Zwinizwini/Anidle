@@ -135,18 +135,10 @@ tbody tr {
 
 .score p {
     margin-bottom: 20px;
+    font-size: 18px;
+    color: white;
 }
 
-.score {
-    position: fixed;
-    background: rgb(41, 41, 41);
-    bottom: 0;
-    left: 0;
-    border-radius: 0px 10px 0px 0px;
-    padding: 20px;
-    font-size: 18px;
-    
-}
 
 /* .resultat img {
     filter: blur(30px)
