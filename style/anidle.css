@@ -1,0 +1,312 @@
+main {
+    width: 70%;
+    flex-direction: column;
+}
+
+td,
+th {
+    padding: 30px;
+    color: white;
+    text-align: center;
+}
+
+.tableau {
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    font-size: 20px;
+    background: rgb(41, 41, 41);
+    table-layout: fixed;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 30px;
+}
+
+.valide {
+    color: green;
+}
+
+.faux {
+    color: #FF3A3A;
+}
+
+
+.proposition {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    width: 70%;
+    gap: 15px;
+}
+
+button {
+    width: 20%;
+    height: 40px;
+    font-size: 15px;
+    border: 1px #636363 solid;
+    border-radius: 5px;
+    
+}
+
+#iptJoueur {
+    width: 80%;
+    height: 15px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+    background: none;
+    color: white;
+    border: 1px solid white;
+    text-transform: capitalize;
+}
+
+tbody tr {
+    border-top: 2px solid black
+}
+
+.desac {
+    display: none !important;
+}
+
+
+.indice {
+    width: 60%;
+    text-align: center;
+}
+
+.indice button {
+    margin: 8px;
+}
+
+.resultat {
+    width: 70%;
+    display: grid;
+    grid-column: 1fr;
+    grid-row: 100px;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10px;
+    background: rgb(41, 41, 41);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.resultat button {
+    grid-column: 2/2;
+    width: 200px;
+    height: 50px;
+    font-size: 17px;
+    background: #c22828;
+    color: white;
+    border: none;
+}
+
+
+.resultat button:hover {
+    cursor: pointer;
+}
+
+.resultat a {
+    position: relative;
+}
+
+.image-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.resultat a:hover .image-hover {
+    display: flex;
+}
+
+.score p {
+    margin-bottom: 20px;
+}
+
+.score {
+    position: fixed;
+    background: rgb(41, 41, 41);
+    bottom: 0;
+    left: 0;
+    border-radius: 0px 10px 0px 0px;
+    padding: 20px;
+    font-size: 18px;
+    
+}
+
+/* .resultat img {
+    filter: blur(30px)
+} */
+
+.ui-autocomplete {
+    float: left;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #1e1e1e;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0px 0px 4px 4px;
+    max-height: 150px;
+    overflow-y: auto;
+    scrollbar-color: #d9d9d9 #1e1e1e;
+  }
+  
+  .ui-autocomplete > li > div {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: white;
+    white-space: nowrap;
+  }
+  
+  .ui-state-hover,
+  .ui-state-active,
+  .ui-state-focus {
+    text-decoration: none;
+    background-color: #333333;
+    cursor: pointer;
+  }
+  
+  .ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+
+.zoneIndice {
+    width: 70%;
+    background: #1e1e1e;
+    display: flex;
+    justify-content: space-around;
+    padding: 1% 0px;
+    border-radius: 5px;
+    color: white;
+}
+
+#youtube-audio iframe {
+    width: 0;
+    height: 0;
+}
+
+.review {
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 5px;
+    overflow-y: auto;
+}
+
+.image-indice {
+    width: 215px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.image-indice img {
+    width: 100%;
+    height: 100%;
+    filter: invert(1) blur(6px);
+    object-fit: contain;
+}
+
+.trailer-review {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#youtube-audio1 {
+    text-align: center;
+    width: 100%;
+}
+
+#youtube-audio1 img {
+    cursor: pointer;
+}
+
+
+/* -------------------------------- */
+
+.popupBackground {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    height: 350px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    background-color: #1e1e1e;
+    border-radius: 30px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    border: 1px solid white;
+    height: 100px;
+    overflow-y: auto;
+    display: flex;
+}
+
+.popupDiv {
+    margin-bottom: 20px;
+}
+
+fieldset div div {
+    display: flex;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+input[type=checkbox] {
+    margin-right: 10px;
+}
+
+
+#startBtn {
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
