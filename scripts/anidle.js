@@ -375,3 +375,10 @@ btnStartGame.addEventListener("click", () => {
     recupImage(animeDeviner[8],0)
     anidle(animeDeviner)
 })
+
+const volume = document.getElementById("volume")
+console.log(volume)
+volume.addEventListener("input", () => {
+    console.log(volume.value)
+    volumeVideo(100 - volume.value)
+})

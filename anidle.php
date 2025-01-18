@@ -50,15 +50,18 @@
                     <img alt="Image Indice">
                 </div>
                 <div class="trailer-review">
-                    <div data-loop="1" id="youtube-audio1">
+                    <div id="youtube-audio1" style="display: block;">
                         <p>Son du Trailer :</p>
+                        <input type="range" min="0" max ="100" id="volume" name="volume" step="1">
+                        <img id="youtube-icon1" src=""/><div id="youtube-player1"></div>
                     </div>
                     <p id="review" class="review"></p>
+                    
                 </div>
             </div>
             <div class="indice">
-                <button class="photo fondDesac">Son du Trailer</button>
-                <button class="photo fondDesac">Pire Review</button>
+                <button class="photo fondDesac">Trailer</button>
+                <button class="photo fondDesac">Review</button>
                 <button class="photo fondDesac">Affiche</button>
             </div>
             <h2>Guess <span>0</span> / 20</h2>

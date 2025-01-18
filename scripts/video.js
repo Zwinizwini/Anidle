@@ -10,9 +10,9 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 let player1;
   function onYouTubeIframeAPIReady() {
 
-      var ctrlq1 = document.getElementById("youtube-audio1");
-      ctrlq1.innerHTML += '<img id="youtube-icon1" src=""/><div id="youtube-player1"></div>';
-      ctrlq1.onclick = toggleAudio1;
+
+      const play = document.getElementById("youtube-icon1")
+      play.onclick = toggleAudio1;
 
       player1 = new YT.Player('youtube-player1', {
         height: '0',
@@ -20,7 +20,7 @@ let player1;
         videoId: "",
         playerVars: {
           autoplay: 0,
-          loop: ctrlq1.dataset.loop,
+          loop: 1,
         },
         events: {
           'onReady': onPlayerReady1,
@@ -44,6 +44,7 @@ let player1;
   }  
 
   function onPlayerReady1(event) {
+    event.target.setVolume(10);
     player1.setPlaybackQuality("small");
     document.getElementById("youtube-audio1").style.display = "block";
     togglePlayButton1(player1.getPlayerState() !== 5);
@@ -61,4 +62,8 @@ let player1;
 
 function pauseVideo() {
   player1.pauseVideo()
+}
+
+function volumeVideo(volume) {
+  player1.setVolume(volume)
 }
