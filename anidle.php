@@ -40,38 +40,40 @@
     </header>
 
     <main class="d-flex">
-
-        <div class="resultat desac" id="resultat">
-            <a href="" target="_blank"><img src="" alt=""><div class="image-hover">Aller sur la page MAL de l'anime</div></a>
-            <button id="btnSuite">Guess Suivant</button>
-        </div>
-        <div class="zoneIndice desac" id="zoneIndice">
-            <div class="image-indice">
-                <img alt="Image Indice">
+        <div class="div70 d-flex">
+            <div class="resultat desac" id="resultat">
+                <a href="" target="_blank"><img src="" alt=""><div class="image-hover">Aller sur la page MAL de l'anime</div></a>
+                <button id="btnSuite">Guess Suivant</button>
             </div>
-            <div class="trailer-review">
-                <div data-loop="1" id="youtube-audio1">
-                    <p>Son du Trailer :</p>
+            <div class="zoneIndice desac" id="zoneIndice">
+                <div class="image-indice">
+                    <img alt="Image Indice">
                 </div>
-                <p id="review" class="review"></p>
+                <div class="trailer-review">
+                    <div data-loop="1" id="youtube-audio1">
+                        <p>Son du Trailer :</p>
+                    </div>
+                    <p id="review" class="review"></p>
+                </div>
             </div>
+            <div class="indice">
+                <button class="photo fondDesac">Son du Trailer</button>
+                <button class="photo fondDesac">Pire Review</button>
+                <button class="photo fondDesac">Affiche</button>
+            </div>
+            <h2>Guess <span>0</span> / 20</h2>
+            <div class="score">
+                <p>Max serie : <span id="score">0</span>
+            </div>
+            <form class="proposition">
+                <input type="text" id="iptJoueur" name="iptJoueur" placeholder="Entrer un anime" autofocus>
+                <button id="btnValid">Valider</button>
+            </form>
         </div>
-        <div class="indice">
-            <button class="photo fondDesac">Son du Trailer</button>
-            <button class="photo fondDesac">Pire Review</button>
-            <button class="photo fondDesac">Affiche</button>
-        </div>
-        <h2>Guess <span>0</span> / 20</h2>
-        <div class="score">
-            <p>Max serie : <span id="score">0</span>
-        </div>
-        <form class="proposition">
-            <input type="text" id="iptJoueur" name="iptJoueur" placeholder="Entrer un anime" autofocus>
-            <button id="btnValid">Valider</button>
-        </form>
         
         <p class="faux" id="animeDejaMis"></p>
-            <table class="tableau desac">
+        <div class="tableau">
+            <table class="desac">
                     <thead>
                         <tr>
                             <th>Anime</th>
@@ -86,6 +88,7 @@
                     <tbody>
                     </tbody>
             </table>
+        </div>
     </main>
 
     <div class="popupBackground">
