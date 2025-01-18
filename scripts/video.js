@@ -46,8 +46,7 @@ let player1;
   function onPlayerReady1(event) {
     event.target.setVolume(10);
     player1.setPlaybackQuality("small");
-    document.getElementById("youtube-audio1").style.display = "block";
-    togglePlayButton1(player1.getPlayerState() !== 5);
+    togglePlayButton1(player1.getPlayerState() == 5);
   }
 
   function onPlayerStateChange1(event) {

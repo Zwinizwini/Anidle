@@ -245,9 +245,9 @@ function anidle(animeDeviner) {
 
     //Recuperation des boutons d'indice
     let btnIndice = document.querySelectorAll(".indice button")
-    btnIndice[0].disabled = false
-    btnIndice[1].disabled = false
-    btnIndice[2].disabled = false
+    btnIndice[0].disabled = true
+    btnIndice[1].disabled = true
+    btnIndice[2].disabled = true
     //Action pour bouton indice
     for (let i = 0; i < btnIndice.length; i++ ) {
         btnIndice[i].addEventListener("click", () => {
