@@ -42,7 +42,7 @@
     <main class="d-flex">
         <div class="div70 d-flex">
             <div class="resultat desac" id="resultat">
-                <a href="" target="_blank"><img src="" alt=""><div class="image-hover">Aller sur la page MAL de l'anime</div></a>
+                <a href="" target="_blank"><img src="" alt=""><div class="image-hover">Page MAL</div></a>
                 <button id="btnSuite">Guess Suivant</button>
             </div>
             <div class="zoneIndice desac" id="zoneIndice">
