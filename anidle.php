@@ -52,7 +52,7 @@
                 <div class="trailer-review">
                     <div id="youtube-audio1" style="display: block;">
                         <p>Son du Trailer :</p>
-                        <input type="range" min="0" max ="100" id="volume" name="volume" step="1">
+                        <input type="range" min="0" max ="100" id="volume" name="volume" step="1" value="10">
                         <img id="youtube-icon1" src=""/><div id="youtube-player1"></div>
                     </div>
                     <p id="review" class="review"></p>
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="indice">
-                <button class="photo fondDesac">Trailer</button>
+                <button class="photo fondDesac">Opening</button>
                 <button class="photo fondDesac">Review</button>
                 <button class="photo fondDesac">Affiche</button>
             </div>
