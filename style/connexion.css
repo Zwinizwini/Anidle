@@ -178,3 +178,25 @@ a:hover {
 .boutton a:hover {
   background: rgb(200,200,200);
 }
+
+@media screen and (max-width: 1000px){
+  main {
+    width: 90%;
+  }
+
+  .profil {
+    flex-direction: column;
+  }
+
+  .pseudo {
+    text-align: center;
+  }
+
+  .modifier form {
+    width: 100%;
+  }
+
+  .conteneur {
+    width: 100%;
+  }
+}

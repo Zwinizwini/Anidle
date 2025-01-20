@@ -12,7 +12,7 @@ main {
 
 td,
 th {
-    padding: 30px 10px;
+    padding: 20px 10px;
     color: white;
     text-align: center;
 }
@@ -35,9 +35,9 @@ table {
     min-width: 1000px;
     border-collapse: collapse;
     border-radius: 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 20px;
-    font-size: 20px;
+    font-size: 1.2rem;
     background: rgb(41, 41, 41);
     table-layout: fixed;
     
@@ -103,11 +103,9 @@ tbody tr {
 
 .resultat {
     width: 70%;
-    display: grid;
-    grid-column: 1fr;
-    grid-row: 100px;
+    display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: space-around;
     border-radius: 5px;
     background: rgb(41, 41, 41);
     padding: 10px;
@@ -115,7 +113,6 @@ tbody tr {
 }
 
 .resultat button {
-    grid-column: 2/2;
     width: 200px;
     height: 50px;
     font-size: 17px;
@@ -190,9 +187,9 @@ h2 {
     max-height: 150px;
     overflow-y: auto;
     scrollbar-color: #d9d9d9 #1e1e1e;
-  }
+}
   
-  .ui-autocomplete > li > div {
+.ui-autocomplete > li > div {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -200,17 +197,17 @@ h2 {
     line-height: 1.42857143;
     color: white;
     white-space: nowrap;
-  }
+}
   
-  .ui-state-hover,
-  .ui-state-active,
-  .ui-state-focus {
+.ui-state-hover,
+.ui-state-active,
+.ui-state-focus {
     text-decoration: none;
     background-color: #333333;
     cursor: pointer;
-  }
+}
   
-  .ui-helper-hidden-accessible {
+.ui-helper-hidden-accessible {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -219,7 +216,7 @@ h2 {
     padding: 0;
     position: absolute;
     width: 1px;
-  }
+}
   
 
 .zoneIndice {
@@ -350,5 +347,78 @@ input[type=checkbox] {
 @media screen and (max-width: 1100px){
     .tableau {
         width: 98%;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .div70 {
+        width: 90%;
+        align-items: center;
+    }
+
+    .tableau {
+        width: 95%;
+    }
+    table {
+        font-size: 1rem;
+    }
+
+    .indice {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .indice button {
+        width: 140px;
+    }
+
+    .proposition {
+        flex-direction: column;
+        width: 80%;
+        align-items: center;
+    }
+
+    #iptJoueur {
+        width: 100%;
+    }
+
+    .proposition button {
+        width: 50%;
+    }
+
+    .zoneIndice {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .image-indice {
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .trailer-review {
+        width: 90%;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #youtube-audio1 {
+        margin-bottom: 5px;
+    }
+
+    .resultat {
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .resultat button {
+        margin-top: 20px;
+    }
+
+    .popup {
+        width: 90%;
     }
 }

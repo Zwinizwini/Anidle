@@ -14,9 +14,10 @@
             <div class="image">
                 <a href="index.php"><img src="images/logo.jpg"></a>
             </div>
-            <h1>Anidle</h1>
-            <div>
+            <a href="index.php" id="titreRouge"><h1>Zwinidle</h1></a>
+            <div class="compteIcone">
                 <a href="compte.php"><img src="images/utilisateur.png" alt="compte"></a>
+                <a href="compte.php" class="compteTel">Compte</a>
             </div>
             
         </nav>
