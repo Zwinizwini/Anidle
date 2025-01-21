@@ -144,6 +144,27 @@ async function recupReview(animeId) {
     }
 }
 
+async function recupPerso(animeId) {
+    let favorite = 100000
+    let personnage = ""
+    try {
+        const reponsePerso = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/characters`)
+        const dataPerso = await reponsePerso.json()
+        const persoMain = dataPerso.data.filter(perso => perso.role == "Main")
+        persoMain.forEach(perso => {
+            if (perso.favorites < favorite) {
+                console.log("Hello IF")
+                personnage = perso.character.name
+                favorite = perso.favorites
+                console.log("favorite = " + favorite)
+            }
+        })
+        document.getElementById("review").innerText = personnage
+    } catch (error) {
+        console.error('Error fecthing data:',error)
+    }
+}
+
 async function recupURLTrailer(animeURL) {
     if(animeURL == "null") {
         changerVideo("dQw4w9WgXcQ")
@@ -262,7 +283,7 @@ function anidle(animeDeviner) {
                     recupURLTrailer(animeDeviner[9])
                     break
                 case 1:
-                    recupReview(animeDeviner[8])
+                    recupPerso(animeDeviner[8])
                     break
                 case 2:
                     recupImage(animeDeviner[8],1)
@@ -298,9 +319,11 @@ function restartGuess() {
     $("#zoneIndice").addClass("desac")
 
     let btnIndice = document.querySelectorAll(".indice button")
-    btnIndice[0].disabled = true
-    btnIndice[1].disabled = true
-    btnIndice[2].disabled = true
+    btnIndice.forEach(btn => {
+        btn.disabled = true
+        btn.classList.remove("fondActiver")
+        btn.classList.add("fondDesac")
+    })
 
     let indexRan = getRandomInt(listeAnime.length)
     let animeDeviner = listeAnime[indexRan]
