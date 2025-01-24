@@ -188,6 +188,9 @@ function anidle(animeDeviner) {
     let conteneurScoreBalise = $(".score")
     let listeAnimeMis = []
     let zoneIndiceBalise = $(".zoneIndice")
+    let element = document.getElementById('monElement');
+    let id = element.dataset.id;
+    let anime_id = JSON.parse(id)
 
     /* Permet d'enlever des classe avec JQuery (plus joli et concis)
     let test = $(".zoneIndice")
@@ -217,6 +220,11 @@ function anidle(animeDeviner) {
                     zoneIndiceBalise.addClass("desac")
                     if (animeDeviner[0].includes(rps) || rps == "kamotama") {
                         score++
+                        if (!anime_id.includes(animeDeviner[8])) {
+                            $.post('traitement.php', { nom: animeDeviner[8] }, function(data) {
+                                $('#score').html(data);
+                            });
+                        }
                         if (score > scoreMax) {
                             console.log("injection cookie")
                             document.cookie = `score=${score}`
@@ -262,6 +270,7 @@ function anidle(animeDeviner) {
                 tentativeAfficher(tentative)
             }
         }
+        
     })
 
     //Recuperation des boutons d'indice

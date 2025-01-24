@@ -1,3 +1,7 @@
+<?php 
+require_once(__DIR__ . '/mysql/connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +29,7 @@
     
 </head>
 <body>
+    <div id="monElement" data-id="<?php echo json_encode($liste); ?>" style="display: none"></div>
     
     <header>
         <nav>

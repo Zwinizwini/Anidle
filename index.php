@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php 
 require_once(__DIR__ . '/mysql/connect.php');
 ?>
 
@@ -58,10 +58,10 @@ require_once(__DIR__ . '/mysql/connect.php');
 
     <!-- Traitment du score max -->
     <?php 
-         if(isset($_COOKIE['score']) && isset($_SESSION['LOGGED_USER'])) {
-             $score = $_COOKIE['score'];
-             setcookie("score", "", time() - 3600); 
-             $scoreUser = $_SESSION['LOGGED_USER']['score'];
+        if(isset($_COOKIE['score']) && isset($_SESSION['LOGGED_USER'])) {
+            $score = $_COOKIE['score'];
+            setcookie("score", "", time() - 3600); 
+            $scoreUser = $_SESSION['LOGGED_USER']['score'];
             if ($score > $scoreUser) {
                 $_SESSION['LOGGED_USER']['score'] = $score;
                 $newScoreStatement = $mysqlClient->prepare('UPDATE users SET score = :max_score WHERE pseudo = :pseudo');
@@ -69,7 +69,7 @@ require_once(__DIR__ . '/mysql/connect.php');
                 $newScoreStatement->bindParam(':pseudo', $_SESSION['LOGGED_USER']['pseudo']);
                 $newScoreStatement->execute();
             }
-         }
+        }
 
     ?>
     

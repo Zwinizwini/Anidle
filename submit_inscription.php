@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require_once(__DIR__ . '/fonctions.php');
 require_once(__DIR__ . '/mysql/connect.php');
 
