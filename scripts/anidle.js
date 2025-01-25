@@ -221,9 +221,7 @@ function anidle(animeDeviner) {
                     if (animeDeviner[0].includes(rps) || rps == "kamotama") {
                         score++
                         if (!anime_id.includes(animeDeviner[8])) {
-                            $.post('traitement.php', { nom: animeDeviner[8] }, function(data) {
-                                $('#score').html(data);
-                            });
+                            $.post('traitement.php', { nom: animeDeviner[8] })
                         }
                         if (score > scoreMax) {
                             console.log("injection cookie")

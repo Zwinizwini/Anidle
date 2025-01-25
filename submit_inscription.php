@@ -10,6 +10,7 @@ require_once(__DIR__ . '/mysql/connect.php');
 $postData = $_POST;
 $valid = true;
 $score = 0;
+$pfp = "uploads/utilisateur.png";
 // Validation du formulaire
 if (isset($postData['email']) && isset($postData['mdp']) && isset($postData['pseudo'])) {
     // Verfiication de validité d'email
@@ -29,11 +30,12 @@ if (isset($postData['email']) && isset($postData['mdp']) && isset($postData['pse
         }
 
         if ($valid) {
-            $newUserStatement = $mysqlClient->prepare('INSERT INTO users (pseudo,email,password,score) VALUES (?,?,?,?)');
+            $newUserStatement = $mysqlClient->prepare('INSERT INTO users (pseudo,email,password,score,pfp) VALUES (?,?,?,?,?)');
             $newUserStatement->bindParam(1, $postData['pseudo']);
             $newUserStatement->bindParam(2, $postData['email']);
             $newUserStatement->bindParam(3, $postData['mdp']);
             $newUserStatement->bindParam(4, $score);
+            $newUserStatement->bindParam(5, $pfp);
             $newUserStatement->execute();
         }
     }
