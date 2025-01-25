@@ -191,6 +191,9 @@ function anidle(animeDeviner) {
     let element = document.getElementById('monElement');
     let id = element.dataset.id;
     let anime_id = JSON.parse(id)
+    let nbGuessElement = document.getElementById('nb_guess');
+    let nbGuessId = nbGuessElement.dataset.id;
+    let nbGuess = JSON.parse(nbGuessId)
 
     /* Permet d'enlever des classe avec JQuery (plus joli et concis)
     let test = $(".zoneIndice")
@@ -223,6 +226,8 @@ function anidle(animeDeviner) {
                         if (!anime_id.includes(animeDeviner[8])) {
                             $.post('traitement.php', { nom: animeDeviner[8] })
                         }
+                        nbGuess++
+                        $.post('traitement.php', {nb_guess: nbGuess})
                         if (score > scoreMax) {
                             console.log("injection cookie")
                             document.cookie = `score=${score}`

@@ -30,6 +30,8 @@ require_once(__DIR__ . '/mysql/connect.php');
 </head>
 <body>
     <div id="monElement" data-id="<?php echo json_encode($liste); ?>" style="display: none"></div>
+    <div id="nb_guess" data-id="<?php echo json_encode($nb_guess); ?>" style="display: none"></div>
+
     
     <header>
         <nav>

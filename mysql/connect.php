@@ -32,4 +32,11 @@ if(isset($_SESSION['LOGGED_USER'])) {
     foreach($listeAnime as $anime) {
         array_push($liste,$anime[0]);
     }
+
+    $nbGuessStatement = $mysqlClient->prepare('SELECT nb_guess FROM users WHERE id=:id');
+    $nbGuessStatement->execute([
+        'id' => $_SESSION['LOGGED_USER']['id']
+    ]);
+    $nb_guessTemp = $nbGuessStatement->fetchAll();
+    $nb_guess = $nb_guessTemp[0][0];
 }
