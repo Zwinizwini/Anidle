@@ -17,7 +17,7 @@ $usersStatement = $mysqlClient->prepare('SELECT * FROM users');
 $usersStatement->execute();
 $users = $usersStatement->fetchAll();
 
-$bestScoreStatement = $mysqlClient->prepare('SELECT pseudo,score,pfp FROM users ORDER BY score DESC LIMIT 10 ');
+$bestScoreStatement = $mysqlClient->prepare('SELECT pseudo,score,pfp,nb_guess FROM users ORDER BY nb_guess DESC LIMIT 10 ');
 $bestScoreStatement->execute();
 $bestScore = $bestScoreStatement->fetchAll();
 

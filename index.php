@@ -10,6 +10,11 @@ require_once(__DIR__ . '/mysql/connect.php');
     <title>Guessr Anime</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="icon" type="image/png" href="images/logo.jpg" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+    <script src="scripts/table.js" defer></script>
+    
 </head>
 <body>
     <header>
@@ -26,7 +31,7 @@ require_once(__DIR__ . '/mysql/connect.php');
         </nav>
     </header>
 
-    <main class="d-flex">                
+    <main class="d-flex" id="index">                
                 <div class="menu">
                 <h2>Guess</h2>
                     <a href="citation.php">Citation</a>
@@ -38,6 +43,7 @@ require_once(__DIR__ . '/mysql/connect.php');
                     <tr>
                         <th>Photo</th>
                         <th>Joueur</th>
+                        <th>Serie</th>
                         <th>Score</th>
                     </tr>
                 </thead>
@@ -47,6 +53,7 @@ require_once(__DIR__ . '/mysql/connect.php');
                             <td  class="pfp"><img src="<?php echo $score['pfp']?>" alt="pfp"></td>
                             <td><?php echo $score['pseudo'];?></td>
                             <td><?php echo $score['score'];?></td>
+                            <td><?php echo $score['nb_guess'];?>
                         </tr>
                     <?php endforeach;?>
                 </tbody>

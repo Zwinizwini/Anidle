@@ -19,6 +19,10 @@ body {
     text-decoration: none;
 }
 
+#index {
+    width: 70%;
+}
+
 h1 {
     font-size: 80px;
     font-weight: 700px;
@@ -28,7 +32,6 @@ h1 {
 main {
     margin: auto;
     width: 50%;
-    height: 50%;
     /* background-color: rgb(110, 110, 110); */
     border-radius: 10px;
     padding-top: 50px;
@@ -38,18 +41,19 @@ main {
 
 .d-flex {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .tableauScore {
     border-collapse: collapse;
     background: #1e1e1e;
-    width: 30%;
+    width: 30% !important;
     text-align: center;
     border: 1px solid #FF3A3A;
     color: white;
 }
+
 
 .tableauScore thead {
     background-color: #FF3A3A;
@@ -116,6 +120,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     width: 50%;
+    max-width: 480px;
 }
 
 .menu h2 {
@@ -151,6 +156,26 @@ a:hover {
     border: 1px solid #441010;
     color: rgb(129, 129, 129);
 }
+
+#DataTables_Table_0_info, .dt-search {
+    display: none;
+}
+
+table.dataTable > tbody > tr > th, table.dataTable > tbody > tr > td {
+    padding: 5px !important;
+    box-sizing:content-box;
+}
+
+.dt-type-numeric {
+    text-align: center !important;
+}
+
+.dt-layout-full {
+    width:min-content !important;
+    border-bottom: 1px solid #FF3A3A;
+}
+
+
 
 @media screen and (max-width: 1000px){
     .compteIcone a:first-child {
