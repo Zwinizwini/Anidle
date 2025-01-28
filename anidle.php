@@ -31,8 +31,9 @@ require_once(__DIR__ . '/mysql/connect.php');
 <body>
     <div id="monElement" data-id="<?php echo json_encode($liste); ?>" style="display: none"></div>
     <div id="nb_guess" data-id="<?php echo json_encode($nb_guess); ?>" style="display: none"></div>
+    <div id="listeCG" style="display: none"><?php echo json_encode($listeCG); ?></div>
+    <div id="listeTitreJoueur" data-id="<?php echo json_encode($listeT); ?>" style="display: none"></div>
 
-    
     <header>
         <nav>
             <div class="image">

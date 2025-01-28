@@ -149,6 +149,7 @@ a:hover {
 .fondActiver:hover {
     cursor: pointer;
     background: #c52f2fbb;
+    border: 1px solid #c52f2fbb;
 }
 
 .fondDesac {

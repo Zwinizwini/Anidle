@@ -30,7 +30,10 @@
     </header>
 
     <main>
-    <div id="listeAnime" data-id="<?php echo json_encode($liste); ?>" style="display: none"></div>
+        <div id="listeTitreJoueur" data-id="<?php echo json_encode($listeT); ?>" style="display: none"></div>
+        <div id="listeTitreNom" style="display: none"><?php echo json_encode($listeNomTitre); ?></div>
+        <div id="listeAnime" data-id="<?php echo json_encode($liste); ?>" style="display: none"></div>
+        <div id="listeCG" style="display: none"><?php echo json_encode($listeCG); ?></div>
        <?php require_once(__DIR__ . '/login.php'); ?>
        <?php if(isset($_SESSION['LOGGED_USER'])):?>
             <div class="conteneur compte">
@@ -40,15 +43,17 @@
                     </div>
                     <div class="infoJ">
                         <p class="pseudo"><?php echo $_SESSION['LOGGED_USER']['pseudo']?></p><br>
+                        <p class="compteTitre">Titre : <span><?php echo $_SESSION['LOGGED_USER']['titre']?></span></p>
                         <p>Votre meilleure série : <?php echo $_SESSION['LOGGED_USER']['score']?></p>
                     </div>
                 </div>
                 
                 <div class="changement">
                     <button class="nonActif">Anidex</button>
-                    <button class="actif">Modifer</button>
+                    <button class="actif">Modifier</button>
+                    <button class="nonActif">Titre</button>
                 </div>
-                <div class="anidex desac">
+                <div class="anidex bordure desac">
                     <div class="divTrier">
                         <label for="trier">Trier par :</label>
                         <select name="trier" id="trier">
@@ -58,6 +63,11 @@
                         </select>
                     </div>
                     <div id="affichageAnidex">
+                    </div>
+                </div>
+                <div class="titre bordure desac">
+                    <h2 style="margin-top: 0px;margin-bottom: 10px">Titre :</h2>
+                    <div class="affichageTitre">
                     </div>
                 </div>
                 <?php require_once(__DIR__ . '/modifier.php'); ?>

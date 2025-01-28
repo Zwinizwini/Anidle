@@ -173,6 +173,27 @@ async function recupURLTrailer(animeURL) {
     }
 }
 
+function ajoutTitreGenre(listeCG,listeIdAnime,listeTitreJ) {
+    console.log(listeCG)
+    console.log(listeIdAnime)
+    console.log(listeTitreJ)
+    let listeAnime = []
+    listeIdAnime.forEach((anime_id) => {
+        listeAnime.push(listTest.find((id) => id[8] == anime_id))
+    })
+
+    listeCG.forEach(element => {
+        if (!listeTitreJ.includes(element[0])) {
+            console.log(element[3] +" : "+listeAnime.filter((anime) => anime[2].includes(element[3])).length)
+            const nbGenre = listeAnime.filter((anime) => anime[2].includes(element[3])).length
+            if (nbGenre >= element[2]) {
+                listeTitreJ.push(element[2])
+                $.post('traitement.php', {idTitre: element[0]})
+            }
+        }
+    })
+}
+
 
 function anidle(animeDeviner) {
     //Initialisation
@@ -188,12 +209,20 @@ function anidle(animeDeviner) {
     let conteneurScoreBalise = $(".score")
     let listeAnimeMis = []
     let zoneIndiceBalise = $(".zoneIndice")
+
+    //Recup données base de donnée
     let element = document.getElementById('monElement');
     let id = element.dataset.id;
     let anime_id = JSON.parse(id)
     let nbGuessElement = document.getElementById('nb_guess');
     let nbGuessId = nbGuessElement.dataset.id;
     let nbGuess = JSON.parse(nbGuessId)
+    const listeCGBalise = document.getElementById("listeCG")
+    let listeCGTemp = listeCGBalise.textContent
+    let listeCG = JSON.parse(listeCGTemp)
+    const listeTitreJoueurBalise = document.getElementById("listeTitreJoueur")
+    let listeTitreJTemp = listeTitreJoueurBalise.dataset.id
+    let listeTitreJ = JSON.parse(listeTitreJTemp)
 
     /* Permet d'enlever des classe avec JQuery (plus joli et concis)
     let test = $(".zoneIndice")
@@ -225,6 +254,7 @@ function anidle(animeDeviner) {
                         score++
                         if (!anime_id.includes(animeDeviner[8])) {
                             $.post('traitement.php', { nom: animeDeviner[8] })
+                            ajoutTitreGenre(listeCG,anime_id,listeTitreJ)
                         }
                         nbGuess++
                         $.post('traitement.php', {nb_guess: nbGuess})
@@ -417,3 +447,8 @@ volume.addEventListener("input", () => {
     console.log(volume.value)
     volumeVideo(100 - volume.value)
 })
+
+const listeCGBalise = document.getElementById("listeCG")
+let listeCGTemp = listeCGBalise.textContent
+let listeCG = JSON.parse(listeCGTemp)
+console.log(listeCG)

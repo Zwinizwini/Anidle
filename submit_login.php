@@ -23,7 +23,8 @@ if (isset($postData['identifiant']) &&  isset($postData['mdp'])) {
                 'pseudo' => $user['pseudo'],
                 'score' => $user['score'],
                 'id' => $user['id'],
-                'pfp' => $user['pfp']
+                'pfp' => $user['pfp'],
+                'titre' => $user['titre']
             ];
         }
     }

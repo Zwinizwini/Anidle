@@ -39,4 +39,39 @@ if(isset($_SESSION['LOGGED_USER'])) {
     ]);
     $nb_guessTemp = $nbGuessStatement->fetchAll();
     $nb_guess = $nb_guessTemp[0][0];
+
+    $listeTitreStatement = $mysqlClient->prepare('SELECT titre_id FROM attribution_titre WHERE user_id=:id');
+    $listeTitreStatement->execute([
+        'id' => $_SESSION['LOGGED_USER']['id']
+    ]);
+    $listeTitre = $listeTitreStatement->fetchAll();
+    $listeT = [];
+    foreach($listeTitre as $titre) {
+        array_push($listeT,$titre[0]);
+    }
+
+    $ConditionStatement = $mysqlClient->prepare('SELECT * FROM titre');
+    $ConditionStatement->execute();
+    $listeCondition = $ConditionStatement->fetchAll();
+    $listeC = [];
+    $listeNomTitre = [];
+    foreach($listeCondition as $titre) {
+        if ($titre[2] != null) {
+            $ltc = [$titre[0],$titre[2]];
+            array_push($listeC,$ltc);
+        }
+        $lt = [$titre[0],$titre[1],$titre[2],$titre[3]];
+        array_push($listeNomTitre,$lt);
+    }
+
+    $ConditionGenreStatement = $mysqlClient->prepare('SELECT * FROM titre WHERE condition_genres IS NOT NULL');
+    $ConditionGenreStatement->execute();
+    $listeConditionGenre = $ConditionGenreStatement->fetchAll();
+    $listeCG = [];
+    $pattern = "/[ ]/";
+    foreach($listeConditionGenre as $titre) {
+        $condition = preg_split($pattern,$titre[3]);
+        $ltcg = [$titre[0],$titre[1],(int) $condition[0],$condition[1]];
+        array_push($listeCG,$ltcg);
+    }
 }

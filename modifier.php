@@ -1,7 +1,7 @@
        
        
        
-       <div class="modifier">
+       <div class="modifier bordure">
             <h2>Modifier le compte</h2>
             <form action="submit_modifier.php" method="POST" enctype="multipart/form-data">
                 <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo">

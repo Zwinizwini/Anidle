@@ -118,6 +118,7 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  box-shadow: 5px 5px #c22828;
 }
 
 .profil {
@@ -166,10 +167,7 @@ a:hover {
   background: rgb(54, 54, 54);
 }
 
-.anidex {
-  border-top: 5px rgb(20, 20, 20) solid;
-  border-bottom: 5px rgb(20, 20, 20) solid;
-}
+
 
 #affichageAnidex {
   display: flex;
@@ -194,6 +192,7 @@ article a img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  box-shadow: 5px 5px #c22828;
 }
 
 .anidex p {
@@ -208,10 +207,25 @@ article a img {
   
 }
 
+.affichageTitre {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.titre button {
+  border-radius: 0px;
+  width: 125px;
+  height: 30px;
+  font-size: 17px;
+  padding: 5px;
+}
+
+
 /*----------------------------------------------------------*/
 
 /*Emplacement de modifier*/
-.modifier {
+.bordure {
   border-top: 5px rgb(20, 20, 20) solid;
   border-bottom: 5px rgb(20, 20, 20) solid;
 }
@@ -234,6 +248,50 @@ article a img {
 
 .modifier fieldset {
   width: 60%;
+}
+
+/*----------------------------------------------------------*/
+
+.fondDesac {
+  position: relative;  /*les .picto-item deviennent référents*/
+  cursor: help;
+  border-radius: 50%;
+}
+
+/* on génère un élément :after lors du survol et du focus :*/
+
+.fondDesac:hover:after,
+.fondDesac:focus:after {
+  content: attr(aria-label);  /* on affiche aria-label */
+  position: absolute;
+  top: -2.4em;
+  left: 50%;
+	transform: translateX(-50%); /* on centre horizontalement  */
+  z-index: 1; /* pour s'afficher au dessus des éléments en position relative */
+  white-space: nowrap;  /* on interdit le retour à la ligne*/
+  padding: 5px 14px;
+  background: #413219;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 1.2rem;
+}
+
+/* on génère un second élément en :before pour la flèche */
+
+[aria-label]:hover:before,
+[aria-label]:focus:before {
+  content: "▼";
+  position: absolute;
+  top: -1em;
+	left: 50%;
+	transform: translateX(-50%); /* on centre horizontalement  */
+  font-size: 20px;
+  color: #413219;
+}
+
+/* pas de contour durant le :focus */
+[aria-label]:focus {
+  outline: none;
 }
 
 /*----------------------------------------------------------*/
