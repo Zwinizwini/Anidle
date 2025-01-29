@@ -12,7 +12,7 @@
     <header>
         <nav>
             <div class="image">
-                <a href="index.php"><img src="images/logo.jpg"></a>
+                <a href="index.php"><img src="images/logo.png"></a>
             </div>
             <a href="index.php" id="titreRouge"><h1>Zwinidle</h1></a>
             <div class="compteIcone">

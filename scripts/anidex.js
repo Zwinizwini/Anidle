@@ -50,15 +50,12 @@ function affichageAnidex(listeAnime) {
         const animeElement = document.createElement("article")
         const imgElement = document.createElement("img")
         imgElement.src = anime[10]
-        const nomElement = document.createElement("p")
-        nomElement.innerText = anime[0][0]
         const lienElement = document.createElement("a")
         lienElement.href = `https://myanimelist.net/anime/${anime[8]}`
         lienElement.target = "_blank"
 
         anidex.appendChild(animeElement)
         animeElement.appendChild(lienElement)
-        animeElement.appendChild(nomElement)
         lienElement.appendChild(imgElement)
     }
 }
@@ -82,45 +79,108 @@ function affichageTitre(listeTitre) {
 
 
 
+
+
 let listeAnime = []
 listeIdAnime.forEach((anime_id) => {
     listeAnime.push(listTest.find((id) => id[8] == anime_id))
 })
 
 
-const listeTrier = Array.from(listeAnime)
+affichageAnidex(listeAnime)
+affichageTitre(listeTitreN)
+
+const listeGenre = ["Adventure","Drama","Fantasy","Action","Sci-Fi","Suspense","Comedy","Romance","Supernatural","Award Winning",
+    "Mystery","Sports","Slice of Life","Ecchi","Gourmet","Horror","Avant Garde","Boys Love","Girls Love"
+]
+
+console.log(listeGenre.length)
+
+const select = document.getElementById("trier")
+listeGenre.forEach((genre) => {
+    const option = document.createElement("option")
+    option.value = genre
+    option.innerText = genre
+    select.appendChild(option)
+})
+
+
+let conditionListeTrier,listeTrier
+const listeCopy = Array.from(listeAnime)
 const trier = document.getElementById("trier")
 trier.addEventListener("input", () => {
     let valeur = trier.value
-    switch (valeur) {
-        case "0":
-            document.getElementById("affichageAnidex").innerHTML = ''
-            affichageAnidex(listeAnime)
-            break
-        case "1":
-            document.getElementById("affichageAnidex").innerHTML = ''
-            listeTrier.sort(function (a,b) {
-                return a[1] - b[1]
-            })
-            console.log(listeTrier)
-            affichageAnidex(listeTrier)
-            break
-        case "2":
-            document.getElementById("affichageAnidex").innerHTML = ''
-            listeTrier.sort(function (a,b) {
-                return b[6] - a[6]
-            })
-            console.log(listeTrier)
-            affichageAnidex(listeTrier)
-            break
-
+    if (valeur == "0") {
+        conditionListeTrier = false
+        affichageAnidex(listeCopy)
+        btnTriage(listeAnime,listeCopy)
+    } else {
+        conditionListeTrier = true
+        listeTrier = listeCopy.filter((anime) => anime[2].includes(valeur))
+        $("#affichageAnidex").html('')
+        affichageAnidex(listeTrier)
+        btnTriage(listeAnime,listeTrier)
     }
 })
 
 
-affichageAnidex(listeAnime)
+function activactionBtn(btn1,btn2,btn3) {
+    $(`#${btn1}`).removeClass("fondActiver")
+    $(`#${btn2}`).removeClass("fondActiver")
+    $(`#${btn1}`).addClass("btnDesac")
+    $(`#${btn2}`).addClass("btnDesac")
+    $(`#${btn3}`).addClass("fondActiver")
+    $(`#${btn3}`).removeClass("btnDesac")
+}
 
-affichageTitre(listeTitreN)
+
+function btnTriage(listeAnime,listeTrier) {
+    let index1 = 0
+    let index2 = 0
+    $("#defaut").on("click", () => {
+        activactionBtn("date","note","defaut")
+        document.getElementById("affichageAnidex").innerHTML = ''
+        affichageAnidex(listeAnime)
+    })
+    $("#date").on("click", () => {
+        activactionBtn("defaut","note","date")
+        document.getElementById("affichageAnidex").innerHTML = ''
+        if (index1%2 == 0) {
+            listeTrier.sort(function (a,b) {
+                return a[1] - b[1]
+            })
+            $("#date img").attr("src" , "./images/angle-vers-le-haut.png")
+            index1++
+        } else {
+            listeTrier.sort(function (a,b) {
+                return b[1] - a[1]
+            })
+            $("#date img").attr("src" , "./images/angle-vers-le-bas.png")
+            index1++
+        }
+        affichageAnidex(listeTrier)
+    })
+    $("#note").on("click", () => {
+        activactionBtn("date","defaut","note")
+        document.getElementById("affichageAnidex").innerHTML = ''
+        if (index2%2 == 0) {
+            listeTrier.sort(function (a,b) {
+                return b[6] - a[6]
+            })
+            $("#note img").attr("src" , "./images/angle-vers-le-haut.png")
+            index2++
+        } else {
+            listeTrier.sort(function (a,b) {
+                return a[6] - b[6]
+            })
+            $("#note img").attr("src" , "./images/angle-vers-le-bas.png")
+            index2++
+        }
+        affichageAnidex(listeTrier)
+    })
+}
+
+btnTriage(listeAnime,listeCopy)
 
 let btnTitreAll = document.querySelectorAll(".titre button")
 for (let i=0;i<btnTitreAll.length; i++) {

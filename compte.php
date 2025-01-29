@@ -18,7 +18,7 @@
     <header>
         <nav>
             <div class="image">
-                <a href="index.php"><img src="images/logo.jpg"></a>
+                <a href="index.php"><img src="images/logo.png"></a>
             </div>
             <a href="index.php" id="titreRouge"><h1>Zwinidle</h1></a>
             <div class="compteIcone">
@@ -55,12 +55,17 @@
                 </div>
                 <div class="anidex bordure desac">
                     <div class="divTrier">
-                        <label for="trier">Trier par :</label>
-                        <select name="trier" id="trier">
-                            <option value="0" selected>Par Defaut</option>
-                            <option value="1">Date</option>
-                            <option value="2">Note</option>
-                        </select>
+                        <div class="boutonTrier" style="padding: 5px">
+                            <label for="trier">Filtrer genre :</label>
+                            <select name="trier" id="trier">
+                                <option value="0" selected>Par Defaut</option>
+                            </select>
+                        </div>
+                        <div class="boutonTrier" style="padding: 5px">
+                            <button value="0" id="defaut" class="btnDesac">Par Defaut</button>
+                            <button value="1" id="date" class="btnDesac">Date<img src=""/></button>
+                            <button value="2" id="note" class="btnDesac">Note<img src=""/></button>
+                        </div>
                     </div>
                     <div id="affichageAnidex">
                     </div>

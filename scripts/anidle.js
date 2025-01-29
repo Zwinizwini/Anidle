@@ -45,7 +45,7 @@ function recupAnime(inputJoueur) {
             return listTest[i]
         }
     }
-    return null
+    return [[],,[],[],[],"",,"",,"",""]
 }
 
 //fonction gérant la validité de chaque valeur d'un anime et affichant le resultat
@@ -72,22 +72,22 @@ function gestionValide(listeInput,animeDeviner) {
                     else {
                         tr += `<td class="faux"> ${valeur} <img src="images/fleche_haut.png"></td>`
                     }
+            } else {
+                if (i == 0 && listeInput[8] == animeDeviner[8]) {
+                    tr += `<td class="valide"> ${valeur[0]}</td>`
+                } else if (i == 0 && !(listeInput[8] == animeDeviner[8])) {
+                    tr += `<td class="faux"> ${valeur[0]}</td>`
                 } else {
-                    if (i == 0 && (animeDeviner[i].includes(valeur[0]) || animeDeviner[i].includes(valeur[1]))) {
-                        tr += `<td class="valide"> ${valeur[0]}</td>`
-                    } else if (i == 0 && !(animeDeviner[i].includes(valeur[0]) || animeDeviner[i].includes(valeur[1]))) {
-                        tr += `<td class="faux"> ${valeur[0]}</td>`
+                tr += `<td>`
+                valeur.forEach((genre) => {
+                    if (animeDeviner[i].includes(genre)) {
+                        tr += `<div class="valide"> ${genre}</div>`
                     } else {
-                    tr += `<td>`
-                    valeur.forEach((genre) => {
-                        if (animeDeviner[i].includes(genre)) {
-                            tr += `<div class="valide"> ${genre}</div>`
-                        } else {
-                            tr += `<div class="faux"> ${genre}</div>`
-                        }
-                    })
-                    tr += `</td>`
-                }
+                        tr += `<div class="faux"> ${genre}</div>`
+                    }
+                })
+                tr += `</td>`
+            }
             }
         };
     tr += `</tr>`
@@ -195,6 +195,8 @@ function ajoutTitreGenre(listeCG,listeIdAnime,listeTitreJ) {
 }
 
 
+
+
 function anidle(animeDeviner) {
     //Initialisation
     let score = 0
@@ -224,11 +226,6 @@ function anidle(animeDeviner) {
     let listeTitreJTemp = listeTitreJoueurBalise.dataset.id
     let listeTitreJ = JSON.parse(listeTitreJTemp)
 
-    /* Permet d'enlever des classe avec JQuery (plus joli et concis)
-    let test = $(".zoneIndice")
-    console.log(test)
-    test.removeClass("desac")
-    */
     
     //Action a effectuer lorsque l'utilisateur valide sa réponse
     $(".proposition").on("submit", function (event) {
@@ -240,21 +237,24 @@ function anidle(animeDeviner) {
         //Verification que la reponse du joueur existe et est non null
         if ((listeNom.includes(rps) && rps != null) || rps == "kamotama" || rps == "perdu") {
 
+            let animeInput = recupAnime(rps)
             //Verification que l'anime n'a pas déjà étais mis
-            if (listeAnimeMis.includes(rps)) {
+            if (listeAnimeMis.includes(animeInput[8])) {
                 paragrapheAnimeMis.text(`L'anime ${rps} a déjà été selectionner par le joueur`)
             } else {
                 paragrapheAnimeMis.text('')
                 //Condition de victoire et de defaite
-                if (animeDeviner[0].includes(rps) || tentative == 19 || rps == "kamotama" || rps == "perdu") {
+                if (rps == 'kamotama' || rps == 'perdu' || animeDeviner[8] == animeInput[8] || tentative == 19) {
+                    gestionValide(animeDeviner,animeDeviner)
                     btnValid.prop("disabled",true)
                     suiteBalise.removeClass("desac")
                     zoneIndiceBalise.addClass("desac")
-                    if (animeDeviner[0].includes(rps) || rps == "kamotama") {
+                    if (rps == 'kamotama' || animeDeviner[8] == animeInput[8]) {
                         score++
                         if (!anime_id.includes(animeDeviner[8])) {
                             $.post('traitement.php', { nom: animeDeviner[8] })
                             ajoutTitreGenre(listeCG,anime_id,listeTitreJ)
+                            anime_id.push(animeDeviner[8])
                         }
                         nbGuess++
                         $.post('traitement.php', {nb_guess: nbGuess})
@@ -270,37 +270,36 @@ function anidle(animeDeviner) {
                     }
                     scoreBalise.text(score)
                     conteneurScoreBalise.removeClass("desac")
+                } else {
+
+                    
+                    //Insertion de l'anime input dans une liste de verification
+                    listeAnimeMis.push(animeInput[8])
+
+
+                    //Activation des boutons pour afficher des indices
+                    switch (tentative) {
+                        case 6:
+                            btnIndice[0].disabled = false
+                            btnIndice[0].classList.add("fondActiver")
+                            btnIndice[0].classList.remove("fondDesac")
+                            break
+                        case 9:
+                            btnIndice[1].disabled = false
+                            btnIndice[1].classList.add("fondActiver")
+                            btnIndice[1].classList.remove("fondDesac")
+                            break
+                        case 14:
+                            btnIndice[2].disabled = false
+                            btnIndice[2].classList.add("fondActiver")
+                            btnIndice[2].classList.remove("fondDesac")
+                            break
+                    }
+
+                    tentative++
+                    gestionValide(animeInput,animeDeviner)
+                    tentativeAfficher(tentative)
                 }
-
-                //Recuperation de l'anime mis par le joueur
-                let animeInput = recupAnime(rps)
-                //Insertion de l'anime input dans une liste de verification
-                listeAnimeMis.push(animeInput[0][0])
-                listeAnimeMis.push(animeInput[0][1])
-
-
-                //Activation des boutons pour afficher des indices
-                switch (tentative) {
-                    case 6:
-                        btnIndice[0].disabled = false
-                        btnIndice[0].classList.add("fondActiver")
-                        btnIndice[0].classList.remove("fondDesac")
-                        break
-                    case 9:
-                        btnIndice[1].disabled = false
-                        btnIndice[1].classList.add("fondActiver")
-                        btnIndice[1].classList.remove("fondDesac")
-                        break
-                    case 14:
-                        btnIndice[2].disabled = false
-                        btnIndice[2].classList.add("fondActiver")
-                        btnIndice[2].classList.remove("fondDesac")
-                        break
-                }
-
-                tentative++
-                gestionValide(animeInput,animeDeviner)
-                tentativeAfficher(tentative)
             }
         }
         

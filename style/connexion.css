@@ -203,8 +203,8 @@ article a img {
 .divTrier {
   text-align: center;
   color: white;
-  font-size: 20px;
-  
+  display: flex;
+  justify-content: space-between;
 }
 
 .affichageTitre {
@@ -219,6 +219,45 @@ article a img {
   height: 30px;
   font-size: 17px;
   padding: 5px;
+}
+
+.boutonTrier {
+  background: rgb(115, 13, 13);
+  border-radius: 10px;
+  padding: 10px;
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  height: 60px;
+}
+
+.boutonTrier button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 35px;
+  border-radius: 10px;
+  color: white;
+  height: 90%;
+}
+
+.btnDesac {
+  background: rgb(115, 13, 13);
+  border: 1px solid rgb(115, 13, 13);
+}
+
+.boutonTrier button img {
+  margin-left: 5px;
+  height: 16px;
+}
+
+.boutonTrier select {
+  background: #c52f2f;
+  color: white;
+  border: 1px solid #c52f2f;
+  border-radius: 5px;
+  height: 90%;
 }
 
 
