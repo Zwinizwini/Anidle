@@ -112,6 +112,7 @@ trier.addEventListener("input", () => {
     let valeur = trier.value
     if (valeur == "0") {
         conditionListeTrier = false
+        $("#affichageAnidex").html('')
         affichageAnidex(listeCopy)
         btnTriage(listeAnime,listeCopy)
     } else {
