@@ -1,3 +1,5 @@
+@import url(variable.css);
+
 main {
     width: 100%;
     flex-direction: column;
@@ -38,7 +40,7 @@ table {
     border-radius: 5px;
     padding: 20px;
     font-size: 1.2rem;
-    background: rgb(41, 41, 41);
+    background: var(--fond-grisatre);
     table-layout: fixed;
     
 }
@@ -107,7 +109,7 @@ tbody tr {
     align-items: center;
     justify-content: space-around;
     border-radius: 5px;
-    background: rgb(41, 41, 41);
+    background: var(--fond-grisatre);
     padding: 10px;
     margin-bottom: 20px;
 }
@@ -116,7 +118,7 @@ tbody tr {
     width: 200px;
     height: 50px;
     font-size: 17px;
-    background: #c22828;
+    background: var(--fond-bouton-actif);
     color: white;
     border: none;
 }
@@ -130,7 +132,7 @@ tbody tr {
     position: relative;
     width: 250px;
     height: 350px;
-    box-shadow: 5px 5px #c22828;
+    box-shadow: 5px 5px var(--fond-bouton-actif);
 
 }
 
@@ -181,12 +183,12 @@ h2 {
     list-style: none;
     font-size: 14px;
     text-align: left;
-    background-color: #1e1e1e;
+    background-color: var(--fond-noir);
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0px 0px 4px 4px;
     max-height: 150px;
     overflow-y: auto;
-    scrollbar-color: #d9d9d9 #1e1e1e;
+    scrollbar-color: #d9d9d9 var(--fond-noir);
 }
   
 .ui-autocomplete > li > div {
@@ -221,7 +223,7 @@ h2 {
 
 .zoneIndice {
     width: 70%;
-    background: #1e1e1e;
+    background: var(--fond-noir);
     display: flex;
     justify-content: space-around;
     padding: 1% 0px;
@@ -295,7 +297,7 @@ h2 {
     color: white;
     font-size: 17px;
     font-weight: 500;
-    background-color: #1e1e1e;
+    background-color: var(--fond-noir);
     border-radius: 30px;
     z-index: 1;
     display: flex;

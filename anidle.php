@@ -33,6 +33,7 @@ require_once(__DIR__ . '/mysql/connect.php');
     <div id="nb_guess" data-id="<?php echo json_encode($nb_guess); ?>" style="display: none"></div>
     <div id="listeCG" style="display: none"><?php echo json_encode($listeCG); ?></div>
     <div id="listeTitreJoueur" data-id="<?php echo json_encode($listeT); ?>" style="display: none"></div>
+    <div id="serie_enCour" data-id="<?php echo $_SESSION['LOGGED_USER']['serie_enCour']; ?>" style="display: none"></div>
 
     <header>
         <nav>
@@ -56,25 +57,25 @@ require_once(__DIR__ . '/mysql/connect.php');
             </div>
             <div class="zoneIndice desac" id="zoneIndice">
                 <div class="image-indice">
-                    <img alt="Image Indice">
+                    <img alt="Image Indice" style="visibility: hidden;">
                 </div>
                 <div class="trailer-review">
                     <div id="youtube-audio1" style="display: block;">
                         <h2>Son du Trailer :</h2>
-                        <input type="range" min="0" max ="100" id="volume" name="volume" step="1" value="10">
-                        <img id="youtube-icon1" src=""/><div id="youtube-player1"></div>
+                        <input type="range" min="0" max ="100" id="volume" name="volume" step="1" value="10" style="visibility: hidden;">
+                        <img id="youtube-icon1" src="" style="visibility: hidden;"/><div id="youtube-player1"></div>
                     </div>
                     <div class="perso">
                         <h2>Personnage :</h2>
-                        <p id="review" class="review"></p>
+                        <p id="review" class="review" style="visibility: hidden;"></p>
                     </div>
                     
                 </div>
             </div>
             <div class="indice">
-                <button class="photo fondDesac">Opening</button>
-                <button class="photo fondDesac">Review</button>
+                <button class="photo fondDesac">Personnage</button>
                 <button class="photo fondDesac">Affiche</button>
+                <button class="photo fondDesac">Opening</button>
             </div>
             <h2>Guess <span>0</span> / 20</h2>
             <div class="score">

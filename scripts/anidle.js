@@ -115,6 +115,7 @@ async function recupImage(animeId,resultat) {
         let imageBalsie = document.querySelector(".resultat img")
         imageBalsie.src = lienImage
       } else {
+        $(".image-indice img").attr("style","")
         let imageBalsie = document.querySelector(".zoneIndice img")
         imageBalsie.src = lienImage
       }
@@ -153,13 +154,12 @@ async function recupPerso(animeId) {
         const persoMain = dataPerso.data.filter(perso => perso.role == "Main")
         persoMain.forEach(perso => {
             if (perso.favorites < favorite) {
-                console.log("Hello IF")
                 personnage = perso.character.name
                 favorite = perso.favorites
-                console.log("favorite = " + favorite)
             }
         })
-        document.getElementById("review").innerText = personnage
+        $(".perso p").attr("style","")
+        document.getElementById("review").innerText = personnage.replace(/(.*), (.*)/, "$2 $1")
     } catch (error) {
         console.error('Error fecthing data:',error)
     }
@@ -169,6 +169,8 @@ async function recupURLTrailer(animeURL) {
     if(animeURL == "null") {
         changerVideo("dQw4w9WgXcQ")
     } else {
+        $("#volume").attr("style","")
+        $("#youtube-icon1").attr("style","")
         changerVideo(animeURL)
     }
 }
@@ -225,6 +227,11 @@ function anidle(animeDeviner) {
     const listeTitreJoueurBalise = document.getElementById("listeTitreJoueur")
     let listeTitreJTemp = listeTitreJoueurBalise.dataset.id
     let listeTitreJ = JSON.parse(listeTitreJTemp)
+    const serieEnCours = $("#serie_enCour").data().id
+    if (serieEnCours != 0) {
+        score = serieEnCours
+        scoreBalise.text(score)
+    }
 
     
     //Action a effectuer lorsque l'utilisateur valide sa réponse
@@ -251,6 +258,7 @@ function anidle(animeDeviner) {
                     zoneIndiceBalise.addClass("desac")
                     if (rps == 'kamotama' || animeDeviner[8] == animeInput[8]) {
                         score++
+                        $.post('traitement.php', {serieEnCours: score})
                         if (!anime_id.includes(animeDeviner[8])) {
                             $.post('traitement.php', { nom: animeDeviner[8] })
                             ajoutTitreGenre(listeCG,anime_id,listeTitreJ)
@@ -267,6 +275,7 @@ function anidle(animeDeviner) {
                             document.cookie = `score=${score}`
                         }
                         score = 0
+                        $.post('traitement.php', {serieEnCours: score})
                     }
                     scoreBalise.text(score)
                     conteneurScoreBalise.removeClass("desac")
@@ -321,13 +330,14 @@ function anidle(animeDeviner) {
             btnIndice[i].disabled = true
             switch (i) {
                 case 0:
-                    recupURLTrailer(animeDeviner[9])
-                    break
-                case 1:
                     recupPerso(animeDeviner[8])
                     break
-                case 2:
+                case 1:
                     recupImage(animeDeviner[8],1)
+                    break
+                case 2:
+                    recupURLTrailer(animeDeviner[9])
+                    
             }
         })
     }
@@ -358,6 +368,11 @@ function restartGuess() {
     $(".image-indice img").attr("src","")
     $("#review").text("")
     $("#zoneIndice").addClass("desac")
+
+    $(".image-indice img").attr("style","visibility: hidden;")
+    $(".perso p").attr("style","visibility: hidden;")
+    $("#volume").attr("style","visibility: hidden;")
+    $("#youtube-icon1").attr("style","visibility: hidden;")
 
     let btnIndice = document.querySelectorAll(".indice button")
     btnIndice.forEach(btn => {
@@ -441,13 +456,6 @@ btnStartGame.addEventListener("click", () => {
 })
 
 const volume = document.getElementById("volume")
-console.log(volume)
 volume.addEventListener("input", () => {
-    console.log(volume.value)
-    volumeVideo(100 - volume.value)
+    volumeVideo(volume.value)
 })
-
-const listeCGBalise = document.getElementById("listeCG")
-let listeCGTemp = listeCGBalise.textContent
-let listeCG = JSON.parse(listeCGTemp)
-console.log(listeCG)

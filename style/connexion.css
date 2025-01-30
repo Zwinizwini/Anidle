@@ -1,3 +1,5 @@
+@import url(variable.css);
+
 
 .desac {
   display: none !important;
@@ -6,7 +8,7 @@
 
 /* Div principal  */
 .conteneur {
-  background: rgb(41, 41, 41);
+  background: var(--fond-grisatre);
   border-radius: 10px;
   width: 60%;
   margin: auto;
@@ -118,7 +120,7 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  box-shadow: 5px 5px #c22828;
+  box-shadow: 5px 5px var(--fond-bouton-actif);
 }
 
 .profil {
@@ -160,7 +162,7 @@ a:hover {
 }
 
 .actif {
-  background: rgb(20, 20, 20);
+  background: var(--background-noir-profond);
 }
 
 .nonActif {
@@ -192,7 +194,7 @@ article a img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  box-shadow: 5px 5px #c22828;
+  box-shadow: 5px 5px var(--fond-bouton-actif);
 }
 
 .anidex p {
@@ -211,12 +213,13 @@ article a img {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  justify-content: center;
 }
 
 .titre button {
   border-radius: 0px;
   width: 125px;
-  height: 30px;
+  height: 72px;
   font-size: 17px;
   padding: 5px;
 }
@@ -253,9 +256,9 @@ article a img {
 }
 
 .boutonTrier select {
-  background: #c52f2f;
+  background: var(--fond-bouton-actif);
   color: white;
-  border: 1px solid #c52f2f;
+  border: 1px solid var(--fond-bouton-actif);
   border-radius: 5px;
   height: 90%;
 }
@@ -265,8 +268,8 @@ article a img {
 
 /*Emplacement de modifier*/
 .bordure {
-  border-top: 5px rgb(20, 20, 20) solid;
-  border-bottom: 5px rgb(20, 20, 20) solid;
+  border-top: 5px var(--background-noir-profond) solid;
+  border-bottom: 5px var(--background-noir-profond) solid;
 }
 
 .modifier form {

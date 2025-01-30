@@ -69,7 +69,7 @@ function affichageTitre(listeTitre) {
         if (!listeTitreJ.includes(titre[0])) {
             btnTitre.disabled = true
             btnTitre.classList.add("fondDesac")
-            titre[2] != null ? btnTitre.ariaLabel = "guess nécéssaire : " + titre[2] : btnTitre.ariaLabel = "guess nécéssaire : " + titre[3]
+            titre[2] != null ? btnTitre.ariaLabel = "guess : " + titre[2] : btnTitre.ariaLabel = "guess : " + titre[3]
         } else {
             btnTitre.classList.add("fondActiver")
         }
@@ -193,4 +193,5 @@ for (let i=0;i<btnTitreAll.length; i++) {
 }
 
 
-
+const objet = [{nom:"test Nom", age: 18, genre: ["test","fate"]}, {nom:"object", age: 494, genre:[]}]
+console.log(objet[0].genre)

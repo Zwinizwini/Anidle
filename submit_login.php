@@ -8,6 +8,7 @@ require_once(__DIR__ . '/mysql/connect.php');
  * ces données doivent être testées et vérifiées.
  */
 $postData = $_POST;
+$serie = 0;
 print_r ($postData);
 echo 'Avant if';
 // Validation du formulaire
@@ -24,7 +25,8 @@ if (isset($postData['identifiant']) &&  isset($postData['mdp'])) {
                 'score' => $user['score'],
                 'id' => $user['id'],
                 'pfp' => $user['pfp'],
-                'titre' => $user['titre']
+                'titre' => $user['titre'],
+                'serie_enCour' => $serie,
             ];
         }
     }

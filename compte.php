@@ -70,7 +70,7 @@
                     <div id="affichageAnidex">
                     </div>
                 </div>
-                <div class="titre bordure desac">
+                <div class="titre bordure desac" style="padding: 20px 0px">
                     <h2 style="margin-top: 0px;margin-bottom: 10px">Titre :</h2>
                     <div class="affichageTitre">
                     </div>

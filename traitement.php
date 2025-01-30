@@ -19,15 +19,14 @@ if (isset($nb_guess)) {
         'nb_guess' => $nb_guess,
         'id' => $id
     ]);
-
-    for ($i = count($listeT); $i < count($listeC); $i++) {
-        if ($nb_guess < $listeC[$i][1]) {
-            break;
+    for ($i = 0; $i < count($listeC); $i++) {
+        if (!in_array($listeC[$i][0],$listeT) && $nb_guess > $listeC[$i][1]) {
+            $ajoutTitre = $mysqlClient->prepare('INSERT INTO attribution_titre (user_id,titre_id) VALUES (?,?)');
+            $ajoutTitre->bindParam(1,$id);
+            $ajoutTitre->bindParam(2,$listeC[$i][0]);
+            $ajoutTitre->execute();
         } 
-        $ajoutTitre = $mysqlClient->prepare('INSERT INTO attribution_titre (user_id,titre_id) VALUES (?,?)');
-        $ajoutTitre->bindParam(1,$id);
-        $ajoutTitre->bindParam(2,$listeC[$i][0]);
-        $ajoutTitre->execute();
+        
     }
 }
 
@@ -49,5 +48,10 @@ if (isset($idTitre)) {
     $ajoutTitre->execute();
 }
 
+
+$serieEnCours = $_POST['serieEnCours'];
+if (isset($serieEnCours)) {
+    $_SESSION['LOGGED_USER']['serie_enCour'] = $serieEnCours;
+}
 
 ?>

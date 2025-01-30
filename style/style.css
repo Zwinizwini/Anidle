@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik+Mono+One&display=swap");
+@import url(variable.css);
 
 * {
     margin: 0px;
@@ -8,12 +9,12 @@
 
 
 body {
-    background-color: rgb(20, 20, 20);
-    color: rgb(163, 16, 16);
+    background-color: var(--background-noir-profond);
+    color: var(--ecriture-rouge);
 }
 
 #titreRouge {
-    color: rgb(163, 16, 16);
+    color: var(--ecriture-rouge);
 }
 #titreRouge:hover {
     text-decoration: none;
@@ -47,16 +48,16 @@ main {
 
 .tableauScore {
     border-collapse: collapse;
-    background: #1e1e1e;
+    background: var(--fond-tableau-score);
     width: 30% !important;
     text-align: center;
-    border: 1px solid #FF3A3A;
+    border: 1px solid var(--rouge-faux);
     color: white;
 }
 
 
 .tableauScore thead {
-    background-color: #FF3A3A;
+    background-color: var(--rouge-faux);
 }
 
 .tableauScore td,.tableauScore th {
@@ -141,20 +142,20 @@ a:hover {
 
 
 .fondActiver {
-    background: #c52f2f;
+    background: var(--fond-bouton-actif);
     color: white;
-    border: 1px solid #c52f2f;
+    border: 1px solid var(--fond-bouton-actif);
 }
 
 .fondActiver:hover {
     cursor: pointer;
-    background: #c52f2fbb;
-    border: 1px solid #c52f2fbb;
+    background: var(--fond-bouton-actif-hover);
+    border: 1px solid var(--fond-bouton-actif-hover);
 }
 
 .fondDesac {
-    background: #441010;
-    border: 1px solid #441010;
+    background: var(--fond-bouton-desac);
+    border: 1px solid var(--fond-bouton-desac);
     color: rgb(129, 129, 129);
 }
 
@@ -173,7 +174,7 @@ table.dataTable > tbody > tr > th, table.dataTable > tbody > tr > td {
 
 .dt-layout-full {
     width:min-content !important;
-    border-bottom: 1px solid #FF3A3A;
+    border-bottom: 1px solid var(--rouge-faux);
 }
 
 
