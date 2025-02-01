@@ -49,9 +49,9 @@ function affichageAnidex(listeAnime) {
         const anidex = document.getElementById("affichageAnidex")
         const animeElement = document.createElement("article")
         const imgElement = document.createElement("img")
-        imgElement.src = anime[10]
+        imgElement.src = anime.img
         const lienElement = document.createElement("a")
-        lienElement.href = `https://myanimelist.net/anime/${anime[8]}`
+        lienElement.href = `https://myanimelist.net/anime/${anime.id}`
         lienElement.target = "_blank"
 
         anidex.appendChild(animeElement)
@@ -83,7 +83,7 @@ function affichageTitre(listeTitre) {
 
 let listeAnime = []
 listeIdAnime.forEach((anime_id) => {
-    listeAnime.push(listTest.find((id) => id[8] == anime_id))
+    listeAnime.push(DonneeAnime.find((id) => id.id == anime_id))
 })
 
 
@@ -117,7 +117,7 @@ trier.addEventListener("input", () => {
         btnTriage(listeAnime,listeCopy)
     } else {
         conditionListeTrier = true
-        listeTrier = listeCopy.filter((anime) => anime[2].includes(valeur))
+        listeTrier = listeCopy.filter((anime) => anime.genre.includes(valeur))
         $("#affichageAnidex").html('')
         affichageAnidex(listeTrier)
         btnTriage(listeAnime,listeTrier)
@@ -148,13 +148,13 @@ function btnTriage(listeAnime,listeTrier) {
         document.getElementById("affichageAnidex").innerHTML = ''
         if (index1%2 == 0) {
             listeTrier.sort(function (a,b) {
-                return a[1] - b[1]
+                return a.annee - b.annee
             })
             $("#date img").attr("src" , "./images/angle-vers-le-haut.png")
             index1++
         } else {
             listeTrier.sort(function (a,b) {
-                return b[1] - a[1]
+                return b.annee - a.annee
             })
             $("#date img").attr("src" , "./images/angle-vers-le-bas.png")
             index1++
@@ -166,15 +166,15 @@ function btnTriage(listeAnime,listeTrier) {
         document.getElementById("affichageAnidex").innerHTML = ''
         if (index2%2 == 0) {
             listeTrier.sort(function (a,b) {
-                return b[6] - a[6]
+                return b.note - a.note
             })
-            $("#note img").attr("src" , "./images/angle-vers-le-haut.png")
+            $("#note img").attr("src" , "./images/angle-vers-le-bas.png")
             index2++
         } else {
             listeTrier.sort(function (a,b) {
-                return a[6] - b[6]
+                return a.note - b.note
             })
-            $("#note img").attr("src" , "./images/angle-vers-le-bas.png")
+            $("#note img").attr("src" , "./images/angle-vers-le-haut.png")
             index2++
         }
         affichageAnidex(listeTrier)
@@ -186,12 +186,8 @@ btnTriage(listeAnime,listeCopy)
 let btnTitreAll = document.querySelectorAll(".titre button")
 for (let i=0;i<btnTitreAll.length; i++) {
     btnTitreAll[i].addEventListener("click", () => {
-        console.log("ouhou")
         $(".compteTitre span").text(listeTitreN[i][1])
-        $.post('traitement.php', {titre: listeTitreN[i][1]})
+        $(".badge").attr("src", "images/badge/titre"+listeTitreN[i][0]+".jpg")
+        $.post('traitement.php', {titre: listeTitreN[i][0]})
     })
 }
-
-
-const objet = [{nom:"test Nom", age: 18, genre: ["test","fate"]}, {nom:"object", age: 494, genre:[]}]
-console.log(objet[0].genre)

@@ -74,4 +74,9 @@ if(isset($_SESSION['LOGGED_USER'])) {
         $ltcg = [$titre[0],$titre[1],(int) $condition[0],$condition[1]];
         array_push($listeCG,$ltcg);
     }
+
+
+    $badgeStatement = $mysqlClient->prepare('SELECT titre.id,titre.nom FROM titre,users WHERE users.titre = titre.id');
+    $badgeStatement->execute();
+    $badge = $badgeStatement->fetchAll();
 }

@@ -39,11 +39,12 @@
             <div class="conteneur compte">
                 <div class="profil">
                     <div class="img">
-                        <img src="<?php echo $_SESSION['LOGGED_USER']['pfp']?>" alt="pfp">
+                        <img src="<?php echo $_SESSION['LOGGED_USER']['pfp']?>" alt="pfp" class="pfp">
+                        <img src="images/badge/titre<?php echo $badge[0]['id'];?>.jpg" alt="badge de titre" class="badge">
                     </div>
                     <div class="infoJ">
                         <p class="pseudo"><?php echo $_SESSION['LOGGED_USER']['pseudo']?></p><br>
-                        <p class="compteTitre">Titre : <span><?php echo $_SESSION['LOGGED_USER']['titre']?></span></p>
+                        <p class="compteTitre">Titre : <span><?php echo $badge[0]['nom'];?></span></p>
                         <p>Votre meilleure série : <?php echo $_SESSION['LOGGED_USER']['score']?></p>
                     </div>
                 </div>

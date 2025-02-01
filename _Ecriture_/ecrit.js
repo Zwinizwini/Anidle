@@ -1301,7 +1301,7 @@ async function ecritureAnime() {
     };
 
 
-    const animeDonne = `{id: ${anime.mal_id},nom: ["${anime.title}","${anime.title_english}"],annee: ${year},genre: [${genresList}],theme: [${themesList}],studio: [${studiosList}],source: "${anime.source}",score: ${anime.score},type: "${anime.type}",op: "${listTest[i][9]}",img: "${img}"}`
+    const animeDonne = `{id: ${anime.mal_id},nom: ["${anime.title}","${anime.title_english}"],annee: ${year},genre: [${genresList}],theme: [${themesList}],studio: [${studiosList}],source: "${anime.source}",note: ${anime.score},type: "${anime.type}",op: "${listTest[i][9]}",img: "${img}"}`
     
     const fs = require('fs');
 

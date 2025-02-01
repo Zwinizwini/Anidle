@@ -8,30 +8,30 @@ function testGenreTheme(listeTest, genres) {
     return oneGenresFound;
 }
   
-function filtre(annee,genres,theme,source) {
+function filtre(annee,genres,themes,source) {
     let listeFiltrer = []
     if (annee != null || annee != undefined) {
-      listeFiltrer = listTest.filter((anime) => anime[1] >= annee)
+      listeFiltrer = DonneeAnime.filter((anime) => anime.annee >= annee)
     }
     if (source.length > 0) {
       if (listeFiltrer.length > 0) {
-        listeFiltrer = listeFiltrer.filter((anime) => anime[5] == source)
+        listeFiltrer = listeFiltrer.filter((anime) => anime.source == source)
       } else {
-        listeFiltrer = listTest.filter((anime) => anime[5] == source)
+        listeFiltrer = DonneeAnime.filter((anime) => anime.source == source)
       }
     }
     if (genres.length > 0) {
       if (listeFiltrer.length != 0) {
-        listeFiltrer = listeFiltrer.filter((anime) => testGenreTheme(anime[2],genres))
+        listeFiltrer = listeFiltrer.filter((anime) => testGenreTheme(anime.genre,genres))
       } else {
-        listeFiltrer = listTest.filter((anime) => testGenreTheme(anime[2],genres))
+        listeFiltrer = DonneeAnime.filter((anime) => testGenreTheme(anime.genre,genres))
       }
     }
-    if (theme.length > 0) {
+    if (themes.length > 0) {
       if (listeFiltrer.length != 0) {
-        listeFiltrer = listeFiltrer.filter((anime) => testGenreTheme(anime[3],theme))
+        listeFiltrer = listeFiltrer.filter((anime) => testGenreTheme(anime.theme,themes))
       } else {
-        listeFiltrer = listTest.filter((anime) => testGenreTheme(anime[3],theme))
+        listeFiltrer = DonneeAnime.filter((anime) => testGenreTheme(anime.theme,themes))
       }
     }
     return listeFiltrer
@@ -40,9 +40,9 @@ function filtre(annee,genres,theme,source) {
 
 //fonction pour recuperer l'indice de l'anime rentré par le joueur
 function recupAnime(inputJoueur) {
-    for (let i=0;i<listTest.length;i++) {
-        if (listTest[i][0].includes(inputJoueur)) {
-            return listTest[i]
+    for (let i=0;i<DonneeAnime.length;i++) {
+        if (DonneeAnime[i].nom.includes(inputJoueur)) {
+            return DonneeAnime[i]
         }
     }
     return [[],,[],[],[],"",,"",,"",""]
@@ -55,32 +55,35 @@ function gestionValide(listeInput,animeDeviner) {
     let tr = `<tr>`
 
     
-    for (let i = 0; i < 7; i++) {
-            let valeur = listeInput[i]
+    for (const cle in listeInput) {
+        if (cle != "id" && cle != "type" && cle != "img" && cle != "op") {
+            const valeur = listeInput[cle]
             if (typeof valeur == "string") {
-                if (animeDeviner.includes(valeur)) {
+                if (animeDeviner[cle].includes(valeur)) {
                     tr += `<td class="valide"> ${valeur}</td>`
                 } else {
                     tr += `<td class="faux"> ${valeur}</td>`
                 }
             } else if (typeof valeur == "number") {
-                    if (valeur > animeDeviner[i]) {
+                    if (valeur > animeDeviner[cle]) {
                         tr += `<td class="faux"> ${valeur} <img src="images/fleche_bas.png"></td>`
-                    } else if (valeur == animeDeviner[i]) {
+                    } else if (valeur == animeDeviner[cle]) {
                         tr += `<td class="valide"> ${valeur}</td>`
                     }
                     else {
                         tr += `<td class="faux"> ${valeur} <img src="images/fleche_haut.png"></td>`
                     }
             } else {
-                if (i == 0 && listeInput[8] == animeDeviner[8]) {
+                if (cle === "nom" && listeInput.id == animeDeviner.id) {
+                    console.log(valeur[0])
                     tr += `<td class="valide"> ${valeur[0]}</td>`
-                } else if (i == 0 && !(listeInput[8] == animeDeviner[8])) {
+                } else if (cle === "nom" && !(listeInput.id == animeDeviner.id)) {
+                    console.log(valeur[0])
                     tr += `<td class="faux"> ${valeur[0]}</td>`
                 } else {
                 tr += `<td>`
                 valeur.forEach((genre) => {
-                    if (animeDeviner[i].includes(genre)) {
+                    if (animeDeviner[cle].includes(genre)) {
                         tr += `<div class="valide"> ${genre}</div>`
                     } else {
                         tr += `<div class="faux"> ${genre}</div>`
@@ -89,7 +92,8 @@ function gestionValide(listeInput,animeDeviner) {
                 tr += `</td>`
             }
             }
-        };
+        }
+    };
     tr += `</tr>`
     trBalsie.innerHTML = tr
     tbodyBalise.prepend(trBalsie)
@@ -181,13 +185,13 @@ function ajoutTitreGenre(listeCG,listeIdAnime,listeTitreJ) {
     console.log(listeTitreJ)
     let listeAnime = []
     listeIdAnime.forEach((anime_id) => {
-        listeAnime.push(listTest.find((id) => id[8] == anime_id))
+        listeAnime.push(DonneeAnime.find((id) => id.id == anime_id))
     })
 
     listeCG.forEach(element => {
         if (!listeTitreJ.includes(element[0])) {
-            console.log(element[3] +" : "+listeAnime.filter((anime) => anime[2].includes(element[3])).length)
-            const nbGenre = listeAnime.filter((anime) => anime[2].includes(element[3])).length
+            console.log(element[3] +" : "+listeAnime.filter((anime) => anime.genre.includes(element[3])).length)
+            const nbGenre = listeAnime.filter((anime) => anime.genre.includes(element[3])).length
             if (nbGenre >= element[2]) {
                 listeTitreJ.push(element[2])
                 $.post('traitement.php', {idTitre: element[0]})
@@ -246,23 +250,23 @@ function anidle(animeDeviner) {
 
             let animeInput = recupAnime(rps)
             //Verification que l'anime n'a pas déjà étais mis
-            if (listeAnimeMis.includes(animeInput[8])) {
+            if (listeAnimeMis.includes(animeInput.id)) {
                 paragrapheAnimeMis.text(`L'anime ${rps} a déjà été selectionner par le joueur`)
             } else {
                 paragrapheAnimeMis.text('')
                 //Condition de victoire et de defaite
-                if (rps == 'kamotama' || rps == 'perdu' || animeDeviner[8] == animeInput[8] || tentative == 19) {
+                if (rps == 'kamotama' || rps == 'perdu' || animeDeviner.id == animeInput.id || tentative == 19) {
                     gestionValide(animeDeviner,animeDeviner)
                     btnValid.prop("disabled",true)
                     suiteBalise.removeClass("desac")
                     zoneIndiceBalise.addClass("desac")
-                    if (rps == 'kamotama' || animeDeviner[8] == animeInput[8]) {
+                    if (rps == 'kamotama' || animeDeviner.id == animeInput.id) {
                         score++
                         $.post('traitement.php', {serieEnCours: score})
-                        if (!anime_id.includes(animeDeviner[8])) {
-                            $.post('traitement.php', { nom: animeDeviner[8] })
+                        if (!anime_id.includes(animeDeviner.id)) {
+                            $.post('traitement.php', { nom: animeDeviner.id })
                             ajoutTitreGenre(listeCG,anime_id,listeTitreJ)
-                            anime_id.push(animeDeviner[8])
+                            anime_id.push(animeDeviner.id)
                         }
                         nbGuess++
                         $.post('traitement.php', {nb_guess: nbGuess})
@@ -283,7 +287,7 @@ function anidle(animeDeviner) {
 
                     
                     //Insertion de l'anime input dans une liste de verification
-                    listeAnimeMis.push(animeInput[8])
+                    listeAnimeMis.push(animeInput.id)
 
 
                     //Activation des boutons pour afficher des indices
@@ -330,13 +334,13 @@ function anidle(animeDeviner) {
             btnIndice[i].disabled = true
             switch (i) {
                 case 0:
-                    recupPerso(animeDeviner[8])
+                    recupPerso(animeDeviner.id)
                     break
                 case 1:
-                    recupImage(animeDeviner[8],1)
+                    recupImage(animeDeviner.id,1)
                     break
                 case 2:
-                    recupURLTrailer(animeDeviner[9])
+                    recupURLTrailer(animeDeviner.op)
                     
             }
         })
@@ -383,16 +387,16 @@ function restartGuess() {
 
     let indexRan = getRandomInt(listeAnime.length)
     let animeDeviner = listeAnime[indexRan]
-    recupImage(animeDeviner[8],0)
+    recupImage(animeDeviner.id,0)
     return animeDeviner
 }
 
 
 //Recuperation de tout les nom des animes pour les inserer dans une liste
-for (let i=0; i<listTest.length; i++) {
-    listeNom.push(listTest[i][0][0])
-    if (listTest[i][0][1] != null) {
-        listeNom.push(listTest[i][0][1])
+for (let i=0; i<DonneeAnime.length; i++) {
+    listeNom.push(DonneeAnime[i].nom[0])
+    if (DonneeAnime[i].nom[1] != null) {
+        listeNom.push(DonneeAnime[i].nom[1])
     }
 }
 
@@ -451,7 +455,7 @@ btnStartGame.addEventListener("click", () => {
 
     let indexRan = getRandomInt(listeAnime.length)
     let animeDeviner = listeAnime[indexRan]
-    recupImage(animeDeviner[8],0)
+    recupImage(animeDeviner.id,0)
     anidle(animeDeviner)
 })
 
