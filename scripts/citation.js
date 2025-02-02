@@ -1,18 +1,24 @@
 
+async function getCitation () {
+    fetch('https://animechan.io/api/v1/quotes').then(response => response.json()).then(data => {
+                    console.log(data);
+                });
+}
+
 
 
 function citation(citationDeviner) {
-    let inputBalise = document.getElementById("iptJoueur")
-    let btnValide = document.getElementById("btnValid")
     let tentative = 0
+    let inputJoueur = $("#iptJoueur")
 
-    btnValide.addEventListener("click", () => {
-        let rps = inputBalise.value
-        inputBalise.value = ``
+    $("form").on("submit", function (event) {
+        event.preventDefault()
+        let rps = inputJoueur.val()
+        inputJoueur.val('')
+        
 
         if (rps != null) {
             if (citationDeviner.includes(rps) || tentative == 10) {
-                btnValide.disabled = true
                 if (citationDeviner.includes(rps)) {
                     console.log("Bravo")
                 } else {
@@ -22,3 +28,6 @@ function citation(citationDeviner) {
         }
     })
 }
+
+citation("test")
+getCitation()

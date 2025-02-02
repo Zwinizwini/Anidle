@@ -31,9 +31,10 @@ require_once(__DIR__ . '/mysql/connect.php');
         </nav>
     </header>
 
-    <main class="d-flex" id="index">                
+    <main class="d-flex" id="index"> 
+        <a href="testVideo.html">Video</a>               
                 <div class="menu">
-                <h2>Guess</h2>
+                    <h2>Guess</h2>
                     <a href="citation.php">Citation</a>
                     <a href="anidle.php">Anidle</a>
                 </div>

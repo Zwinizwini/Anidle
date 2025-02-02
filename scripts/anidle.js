@@ -411,18 +411,6 @@ $(function() {
 });
 
 
-/*
-async function citation () {
-    const response = await fetch(`https://animechan.io/api/v1/quotes?anime=ReLife`)
-    const quote = await response.json();
-    console.log(quote)
-}
-
-citation()
-*/
-
-// anidle(animeDeviner)
-
 let popupBalise = document.querySelector(".popupBackground")
 let btnGenreBalise = document.querySelectorAll(".genre input")
 let btnThemeBalise = document.querySelectorAll(".theme input")
