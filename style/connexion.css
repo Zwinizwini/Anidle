@@ -273,6 +273,19 @@ article a img {
   height: 90%;
 }
 
+.top {
+  position: sticky;
+  left: 95.5%;
+  bottom: 10px;
+  background: var(--fond-grisatre);
+  border-radius: 5px;
+  width: 32px;
+  height: 32px;
+}
+.top:hover {
+  cursor: pointer;
+  
+}
 
 /*----------------------------------------------------------*/
 

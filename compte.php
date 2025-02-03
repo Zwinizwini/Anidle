@@ -30,6 +30,9 @@
     </header>
 
     <main>
+        <a id="top"></a>
+
+
         <div id="listeTitreJoueur" data-id="<?php echo json_encode($listeT); ?>" style="display: none"></div>
         <div id="listeTitreNom" style="display: none"><?php echo json_encode($listeNomTitre); ?></div>
         <div id="listeAnime" data-id="<?php echo json_encode($liste); ?>" style="display: none"></div>
@@ -80,8 +83,18 @@
                 <div class="boutton"><a href="logout.php">Se Deconnecter</a></div>
             </div>
         <?php endif;?>
+        <script>
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            }
+        </script>
+        
     </main>
+    <img onclick="scrollToTop()" src="images/top-page.png" alt="Top" class="top"/>
     
 </body>
 </html>
-
