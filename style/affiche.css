@@ -1,0 +1,265 @@
+@import url(variable.css);
+
+main {
+    width: 100%;
+    flex-direction: column;
+    padding: 50px 0px;
+}
+
+.div70 {
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+}
+
+.conteneurCanva,.affiche {
+    margin: auto;
+    width: 357px;
+    height: 500px;
+    overflow: hidden;
+}
+
+#monCanvas, .affiche img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.blur {
+    filter: blur(15px);
+}
+
+.blur-invert {
+    filter: invert(1) blur(15px);
+}
+
+.invert {
+    filter: invert(1);
+}
+
+.desac {
+    display: none;
+}
+
+.afficheSuivante {
+    width: 327px;
+    height: 40px;
+    margin: auto;
+    margin-top: 25px;
+    border: 2px solid rgb(81, 81, 81);
+    background: rgb(61, 61, 61);
+    border-radius: 10px;
+    color: white;
+}
+
+.vie {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    margin: auto;
+    margin-top: 25px;
+    width: 357px;
+    justify-content: center;
+}
+
+.vie img {
+    width: 32px;
+    height: 100%;
+    object-fit: contain;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 25px;
+    width: 357px;
+}
+
+form input, form button {
+    height: 40px;
+    border-radius: 10px;
+    border: 2px solid rgb(61, 61, 61);
+    background: var(--fond-grisatre);
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+
+form input {
+    width: 65%;
+}
+
+form button {
+    width: 25%;
+    height: 54px;
+    border: 2px solid rgb(81, 81, 81);
+    background: rgb(61, 61, 61);
+}
+
+form button:hover {
+    cursor: pointer;
+}
+
+form input:focus {
+    border: 2px solid rgb(101, 101, 101);
+}
+
+.reponseJoueur {
+    margin: auto;
+    margin-top: 25px;
+    background: var(--fond-grisatre);
+    border-radius: 5px;
+    color: white;    
+}
+
+p {
+    border-top: 2px solid var(--background-noir-profond);
+    width: 327px;
+    padding: 15px;
+    text-align: center;
+}
+
+
+.ui-autocomplete {
+    width: 242px;
+    float: left;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: var(--fond-noir);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0px 0px 4px 4px;
+    max-height: 150px;
+    overflow-y: auto;
+    scrollbar-color: #d9d9d9 var(--fond-noir);
+}
+  
+.ui-autocomplete > li > div {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: white;
+    white-space: nowrap;
+}
+  
+.ui-state-hover,
+.ui-state-active,
+.ui-state-focus {
+    text-decoration: none;
+    background-color: #333333;
+    cursor: pointer;
+}
+  
+.ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.popup {
+    gap: 20px;
+    width: 450px;
+    height: 250px;
+}
+
+.popup button {
+    height: 40px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.popupDiv label {
+    font-size: 22px;
+}
+
+.popupDiv select {
+    text-align: center;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.popupDiv select:hover {
+    cursor: pointer;
+}
+
+.startGame {
+    width: 250px;
+}
+
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 225px;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
