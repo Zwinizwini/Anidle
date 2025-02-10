@@ -12,6 +12,8 @@ main {
     margin: auto;
 }
 
+
+
 td,
 th {
     padding: 20px 10px;
@@ -53,36 +55,22 @@ table {
     color: #FF3A3A;
 }
 
-
+#iptJoueur {
+    width: 80%;
+}
 .proposition {
-    display: flex;
-    justify-content: center;
     padding: 15px;
     width: 70%;
     gap: 15px;
 }
 
-button {
+.resultat button, .indice button, 
+.popup button{ 
     width: 20%;
     height: 40px;
     font-size: 15px;
-    border: 1px #636363 solid;
     border-radius: 5px;
     
-}
-
-#iptJoueur {
-    width: 80%;
-    height: 15px;
-}
-
-input {
-    padding: 10px;
-    border-radius: 5px;
-    background: none;
-    color: white;
-    border: 1px solid white;
-    text-transform: capitalize;
 }
 
 tbody tr {
@@ -101,6 +89,7 @@ tbody tr {
 
 .indice button {
     margin: 8px;
+    border: 1px solid var(--fond-bouton-desac);
 }
 
 .resultat {
@@ -172,54 +161,7 @@ h2 {
 }
 
 
-/* .resultat img {
-    filter: blur(30px)
-} */
 
-.ui-autocomplete {
-    float: left;
-    padding: 5px 0;
-    margin: 2px 0 0;
-    list-style: none;
-    font-size: 14px;
-    text-align: left;
-    background-color: var(--fond-noir);
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 0px 0px 4px 4px;
-    max-height: 150px;
-    overflow-y: auto;
-    scrollbar-color: #d9d9d9 var(--fond-noir);
-}
-  
-.ui-autocomplete > li > div {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: normal;
-    line-height: 1.42857143;
-    color: white;
-    white-space: nowrap;
-}
-  
-.ui-state-hover,
-.ui-state-active,
-.ui-state-focus {
-    text-decoration: none;
-    background-color: #333333;
-    cursor: pointer;
-}
-  
-.ui-helper-hidden-accessible {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-  
 
 .zoneIndice {
     width: 70%;
@@ -274,35 +216,7 @@ h2 {
 
 /* -------------------------------- */
 
-.popupBackground {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-}
 
-.popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    justify-content: center;
-    align-items: center;
-    width: 35%;
-    height: 350px;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    font-size: 17px;
-    font-weight: 500;
-    background-color: var(--fond-noir);
-    border-radius: 30px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-}
 
 fieldset {
     border: 1px solid white;

@@ -72,7 +72,7 @@ main {
     height: 40px;
 }
 
-.pfp img {
+.pfp img,#bouttonAmis img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -96,10 +96,6 @@ nav {
 a {
     color: white;
     text-decoration: none;
-}
-
-a:hover {
-    box-shadow: rgba(40, 40, 40, 0.25) 0px 14px 28px, rgba(40, 40, 40, 40.22) 0px 10px 10px;
 }
 
 .image, .compteIcone {
@@ -138,19 +134,25 @@ a:hover {
     font-size: 30px;
     font-weight: 600px;
     background: rgb(46, 46, 46);
+    transition: all 1s;
+}
+
+.menu a:hover {
+    box-shadow: rgba(40, 40, 40, 0.25) 0px 14px 28px, rgba(40, 40, 40, 40.22) 0px 10px 10px;
+    transform: scale(1.1);
 }
 
 
 .fondActiver {
-    background: var(--fond-bouton-actif);
+    background: var(--fond-bouton-actif) !important;
     color: white;
-    border: 1px solid var(--fond-bouton-actif);
+    border: 1px solid var(--fond-bouton-actif) !important;
 }
 
 .fondActiver:hover {
     cursor: pointer;
-    background: var(--fond-bouton-actif-hover);
-    border: 1px solid var(--fond-bouton-actif-hover);
+    background: var(--fond-bouton-actif-hover) !important;
+    border: 1px solid var(--fond-bouton-actif-hover) !important;
 }
 
 .fondDesac {
@@ -179,7 +181,7 @@ table.dataTable > tbody > tr > th, table.dataTable > tbody > tr > td {
 
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
 }
 
@@ -189,6 +191,9 @@ footer {
     width: 250px;
     border-top: 1px solid var(--background-noir-profond);
     box-shadow: rgba(255, 255, 255, 0.15) 1.95px 1.95px 2.6px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .cache {
@@ -197,11 +202,115 @@ footer {
     transition: all 1s ease;
     background-color: var(--fond-grisatre);
     box-shadow: rgba(255, 255, 255, 0.15) 1.95px 1.95px 2.6px;
+    overflow-y: auto;
 }
-  
+
+.cache div,#bouttonAmis {
+    display: flex;
+}
+
+
 .etendu {
     height: 300px;
 }
+
+.entenduBoutton {
+    height: 30px;
+}
+
+.listeUtilisateurDesac {
+    display: none !important;
+}
+
+.listeUtilisateur div {
+    height: 45px;
+    gap: 15px;
+    justify-content: space-between;
+    overflow-x: auto;
+}
+
+.listeUtilisateur div img, #amis {
+    width: 45px;
+    height: 45px;
+}
+
+.listeUtilisateur div p {
+    align-content: center;
+    color: white;
+    font-size: 18px;
+}
+
+.listeUtilisateur div button {
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+}
+
+.listeUtilisateur div button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.divBoutton {
+    align-items: center;
+}
+
+
+.listeUtilisateur {
+    flex-direction: column;
+    gap: 5px;
+}
+
+.listeUtilisateur a {
+    display: flex;
+    align-items: center;
+}
+
+.listeUtilisateur a img {
+    width: 40px;
+    height: 40px;
+}
+
+#bouttonAmis button {
+    border-radius: 0px;
+    font-size: 20px;
+    color: white;
+    border: 0px;
+    padding: 5px;
+    width: 33.3%;
+}
+
+.ajoutAmis {
+    margin-top: 7.5px;
+    margin-right: 5px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#bouttonAmis::-webkit-scrollbar, .cache::-webkit-scrollbar {
+    display: none;
+}
+
+#bouttonAmis, .cache{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+  
+
+#bouttonAmis button:hover, .divBoutton button:hover{
+    cursor: pointer;
+}
+  
+.actif {
+    background: var(--background-noir-profond);
+}
+  
+.nonActif {
+    background: rgb(54, 54, 54);
+}
+
 
 
 .popupBackground {

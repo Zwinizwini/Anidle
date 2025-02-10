@@ -54,4 +54,18 @@ if (isset($serieEnCours)) {
     $_SESSION['LOGGED_USER']['serie_enCour'] = $serieEnCours;
 }
 
+
+$score = $_POST['score'];
+if($score && isset($_SESSION['LOGGED_USER'])) {
+    $scoreUser = $_SESSION['LOGGED_USER']['score'];
+    if ($score > $scoreUser) {
+        $_SESSION['LOGGED_USER']['score'] = $score;
+        $newScoreStatement = $mysqlClient->prepare('UPDATE users SET score = :max_score WHERE pseudo = :pseudo');
+        $newScoreStatement->bindParam(':max_score', $score);
+        $newScoreStatement->bindParam(':pseudo', $_SESSION['LOGGED_USER']['pseudo']);
+        $newScoreStatement->execute();
+    }
+}
+
+
 ?>

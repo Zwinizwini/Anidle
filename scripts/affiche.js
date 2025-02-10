@@ -51,8 +51,16 @@ function switchImageCanva() {
 
 function viePleine() {
     for (let i=0;i<10;i++) {
-        $(`[data_coeur='${i}']`).attr("src","./images/coeur-plein.png")
+        $(`[data_coeur='${i}']`).attr("src","../images/coeur-plein.png")
     }
+}
+
+function viePerdu(tentative) {
+    $(`[data_coeur='${9-tentative}']`).attr("src","../images/coeur-vide.png")
+    $(`[data_coeur='${9-tentative}']`).addClass("animate__heartBeat")
+    setTimeout(() => {
+        $(`[data_coeur='${9-tentative}']`).removeClass("animate__heartBeat");
+    }, 1000);
 }
 
 function jeuAffiche(animeDeviner,jeu) {
@@ -100,12 +108,17 @@ function jeuAffiche(animeDeviner,jeu) {
                 score++
                 switchImageCanva()
             } else if (tentative == 9) {
-                $(`[data_coeur='${9-tentative}']`).attr("src","./images/coeur-vide.png")
+                viePerdu(tentative)
                 score=0
                 switchImageCanva()
             } else {
-                $(`[data_coeur='${9-tentative}']`).attr("src","./images/coeur-vide.png")
+                viePerdu(tentative)
                 tentative++
+                if (tentative == 7) {
+                    $(`[data_coeur='${1}']`).addClass("animate__heartBeat animate__infinite")
+                    $(`[data_coeur='${0}']`).addClass("animate__heartBeat animate__infinite")
+                    $(`[data_coeur='${2}']`).addClass("animate__heartBeat animate__infinite")
+                }
                 switch (jeu) {
                     case 'Pixel':
                         pixelImage(Math.floor(50/tentative+1))
@@ -157,13 +170,7 @@ function jeuAffiche(animeDeviner,jeu) {
     
 }
 
-
-for (let i=0; i<DonneeAnime.length; i++) {
-    listeNom.push(DonneeAnime[i].nom[0])
-    if (DonneeAnime[i].nom[1] != null) {
-        listeNom.push(DonneeAnime[i].nom[1])
-    }
-}
+recupNom()
 
 $(function() {
     $("#iptJoueur").autocomplete({
@@ -177,10 +184,11 @@ $(function() {
 
 for (let i=0;i<10;i++) {
     const img = $("<img>", {
-        src: "./images/coeur-plein.png",
+        src: "../images/coeur-plein.png",
         alt: "coeur",
         data_coeur: i,
-        id: "coeur"
+        id: "coeur",
+        class: 'animate__animated'
     })
     $(".vie").append(img)
 }
@@ -210,3 +218,7 @@ $(".startGame").on("click", () => {
 
     jeuAffiche(DonneeAnime[index],jeu)
 })
+
+const test = ["Fruits Basket 1st Season","Fruits Basket 1st Season"]
+const test2 = [test[0]]
+console.log(test2.includes(test[1])) 

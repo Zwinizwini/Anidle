@@ -30,7 +30,7 @@ let player1;
   } 
 
   function togglePlayButton1(play) {    
-    document.getElementById("youtube-icon1").src = play ? "images/pause.png" : "images/bouton-jouer.png";
+    document.getElementById("youtube-icon1").src = play ? "../images/pause.png" : "../images/bouton-jouer.png";
   }
 
   function toggleAudio1() {

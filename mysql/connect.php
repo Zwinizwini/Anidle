@@ -23,6 +23,31 @@ $bestScore = $bestScoreStatement->fetchAll();
 
 
 if(isset($_SESSION['LOGGED_USER'])) {
+
+    $listeUserNonAmisStatement = $mysqlClient->prepare('SELECT u.pseudo, u.pfp, u.id FROM users u WHERE u.id != 1 AND u.id NOT IN (SELECT uid2 FROM listeamis WHERE uid1=:id)');
+    $listeUserNonAmisStatement->execute([
+        'id' => $_SESSION['LOGGED_USER']['id']
+    ]);
+    $listeUserNonAmis = $listeUserNonAmisStatement->fetchAll(PDO::FETCH_ASSOC);
+
+    $demandeEnvoieStatement = $mysqlClient->prepare('SELECT uid_recue FROM demandeamis WHERE uid_demande=:id');
+    $demandeEnvoieStatement->execute([
+        'id' => $_SESSION['LOGGED_USER']['id']
+    ]);
+    $demandeEnvoieListe = $demandeEnvoieStatement->fetchAll(PDO::FETCH_ASSOC);
+
+    $demandeAmisStatement = $mysqlClient->prepare('SELECT users.pseudo,users.pfp,users.id FROM demandeamis,users WHERE users.id = demandeamis.uid_demande AND demandeamis.uid_recue=:id');
+    $demandeAmisStatement->execute([
+        'id' => $_SESSION['LOGGED_USER']['id']
+    ]);
+    $demandeAmisListe = $demandeAmisStatement->fetchAll(PDO::FETCH_ASSOC);
+
+    $listeAmisStatement = $mysqlClient->prepare('SELECT u.id,u.pseudo,u.pfp,u.titre, t.nom FROM users u JOIN titre t ON u.titre = t.id WHERE u.id IN (SELECT uid2 FROM listeamis WHERE uid1=:id)');
+    $listeAmisStatement->execute([
+        'id' => $_SESSION['LOGGED_USER']['id']
+    ]);
+    $listeAmis = $listeAmisStatement->fetchAll(PDO::FETCH_ASSOC);
+
     $listeAnimeStatement = $mysqlClient->prepare('SELECT anime_id FROM listeanime WHERE user_id=:id');
     $listeAnimeStatement->execute([
         'id' => $_SESSION['LOGGED_USER']['id']

@@ -1,10 +1,10 @@
 
-const listeImg = [new Array("horimiya_1.png","horimiya_2.png","horimiya_3.png"), 
-    new Array("fb_1.png","fb_2.png","fb_3.png"),
-    new Array("yc_1.png","yc_2.png","yc_3.png")];
+// const listeImg = [new Array("horimiya_1.png","horimiya_2.png","horimiya_3.png"), 
+//     new Array("fb_1.png","fb_2.png","fb_3.png"),
+//     new Array("yc_1.png","yc_2.png","yc_3.png")];
 
-const altImg = ["horimiya","fruits basket","yuru camp"]
-const lienImg = "images/"
+// const altImg = ["horimiya","fruits basket","yuru camp"]
+// const lienImg = "images/"
 
 let listeNom = []
 const DonneeAnime = [
@@ -475,7 +475,7 @@ const DonneeAnime = [
 {id: 49220,nom: ["Isekai Ojisan","Uncle from Another World"],annee: 2022,genre: ["Comedy","Fantasy"],theme: ["Adult Cast","Isekai","Otaku Culture","Parody"],studio: ["Atelier Pontdarc"],source: "Web manga",note: 7.77,type: "TV",op: "rzQJ1stoUnE",img: "https://cdn.myanimelist.net/images/anime/1743/125204l.webp"},
 {id: 52741,nom: ["Undead Unluck","null"],annee: 2023,genre: ["Action","Comedy"],theme: ["Super Power"],studio: ["David Production"],source: "Manga",note: 7.76,type: "TV",op: "stzAsF51T_w",img: "https://cdn.myanimelist.net/images/anime/1136/138410l.webp"},
 {id: 552,nom: ["Digimon Adventure","Digimon: Digital Monsters"],annee: 1999,genre: ["Action","Adventure","Comedy","Fantasy"],theme: ["Isekai"],studio: ["Toei Animation"],source: "Other",note: 7.78,type: "TV",op: "XV2TfYSgXT4",img: "https://cdn.myanimelist.net/images/anime/1471/99249l.webp"},
-{id: 210,nom: ["Ranma ½","Ranma ½"],annee: 1989,genre: ["Action","Comedy","Romance","Ecchi"],theme: ["Magical Sex Shift","Martial Arts","School"],studio: ["Studio Deen"],source: "Manga",note: 7.77,type: "TV",op: "XW9BapLxwkw",img: "https://cdn.myanimelist.net/images/anime/13/6441l.webp"},
+{id: 210,nom: ["Ranma ½ (1989)","Ranma ½"],annee: 1989,genre: ["Action","Comedy","Romance","Ecchi"],theme: ["Magical Sex Shift","Martial Arts","School"],studio: ["Studio Deen"],source: "Manga",note: 7.77,type: "TV",op: "XW9BapLxwkw",img: "https://cdn.myanimelist.net/images/anime/13/6441l.webp"},
 {id: 29787,nom: ["Gochuumon wa Usagi desu ka??","Is the Order a Rabbit??"],annee: 2015,genre: ["Slice of Life"],theme: ["CGDCT","Iyashikei","Workplace"],studio: ["Kinema Citrus","White Fox"],source: "4-koma manga",note: 7.77,type: "TV",op: "FvCpvYISlXI",img: "https://cdn.myanimelist.net/images/anime/8/76702l.webp"},
 {id: 54112,nom: ["Zom 100: Zombie ni Naru made ni Shitai 100 no Koto","Zom 100: Bucket List of the Dead"],annee: 2023,genre: ["Action","Comedy","Horror","Suspense"],theme: ["Adult Cast","Gore","Survival"],studio: ["BUG FILMS"],source: "Manga",note: 7.75,type: "TV",op: "fTnhrENnJAA",img: "https://cdn.myanimelist.net/images/anime/1384/136408l.webp"},
 {id: 52955,nom: ["Mahoutsukai no Yome Season 2","The Ancient Magus' Bride Season 2"],annee: 2023,genre: ["Drama","Fantasy","Romance"],theme: ["Mythology","School","Urban Fantasy"],studio: ["Studio Kafka"],source: "Manga",note: 7.76,type: "TV",op: "6_7upsfU8sk",img: "https://cdn.myanimelist.net/images/anime/1532/135155l.webp"},
@@ -523,7 +523,7 @@ const DonneeAnime = [
 {id: 43523,nom: ["Tsuki ga Michibiku Isekai Douchuu","Tsukimichi -Moonlit Fantasy-"],annee: 2021,genre: ["Action","Adventure","Comedy","Fantasy"],theme: ["Isekai"],studio: ["C2C"],source: "Light novel",note: 7.71,type: "TV",op: "i80OoZ73p5g",img: "https://cdn.myanimelist.net/images/anime/1950/116474l.webp"},
 {id: 6024,nom: ["Chi's Sweet Home: Atarashii Ouchi","Chi's New Address"],annee: 2009,genre: ["Comedy","Slice of Life"],theme: ["Pets"],studio: ["Madhouse"],source: "Manga",note: 7.71,type: "TV",op: "afmd_8CUAh0",img: "https://cdn.myanimelist.net/images/anime/9/14095l.webp"},
 {id: 38671,nom: ["Enen no Shouboutai","Fire Force"],annee: 2019,genre: ["Action","Fantasy","Sci-Fi"],theme: ["Urban Fantasy"],studio: ["David Production"],source: "Manga",note: 7.71,type: "TV",op: "JBqxVX_LXvk",img: "https://cdn.myanimelist.net/images/anime/1664/103275l.webp"},
-{id: 1293,nom: ["Urusei Yatsura","Urusei Yatsura"],annee: 1981,genre: ["Comedy","Romance","Sci-Fi"],theme: [],studio: ["Pierrot","Studio Deen"],source: "Manga",note: 7.71,type: "TV",op: "2hulET9tn9M",img: "https://cdn.myanimelist.net/images/anime/9/17573l.webp"},
+{id: 1293,nom: ["Urusei Yatsura (1981)","Urusei Yatsura"],annee: 1981,genre: ["Comedy","Romance","Sci-Fi"],theme: [],studio: ["Pierrot","Studio Deen"],source: "Manga",note: 7.71,type: "TV",op: "2hulET9tn9M",img: "https://cdn.myanimelist.net/images/anime/9/17573l.webp"},
 {id: 14741,nom: ["Chuunibyou demo Koi ga Shitai!","Love, Chunibyo & Other Delusions!"],annee: 2012,genre: ["Comedy","Romance"],theme: ["School"],studio: ["Kyoto Animation"],source: "Light novel",note: 7.7,type: "TV",op: "Ep3QkaabO-c",img: "https://cdn.myanimelist.net/images/anime/1905/142840l.webp"},
 {id: 22777,nom: ["Dragon Ball Kai (2014)","Dragon Ball Z Kai: The Final Chapters"],annee: 2014,genre: ["Action","Adventure","Comedy","Fantasy"],theme: ["Martial Arts"],studio: ["Toei Animation"],source: "Manga",note: 7.71,type: "TV",op: "aiVEVmWBUd4",img: "https://cdn.myanimelist.net/images/anime/10/59275l.webp"},
 {id: 51536,nom: ["The iDOLM@STER Cinderella Girls: U149","null"],annee: 2023,genre: ["Slice of Life"],theme: ["Idols (Female)","Music"],studio: ["CygamesPictures"],source: "Web manga",note: 7.69,type: "TV",op: "7hOZPtgp6_A",img: "https://cdn.myanimelist.net/images/anime/1875/133377l.webp"},

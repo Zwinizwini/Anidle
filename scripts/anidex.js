@@ -13,35 +13,54 @@ let listeTitreNTemp = listeTitreNomBalise.textContent
 let listeTitreN = JSON.parse(listeTitreNTemp)
 console.log(listeTitreN)
 
+let pageAmis
+const pageAmisBalise = document.getElementById("pageAmis")
+pageAmis = JSON.parse(pageAmisBalise.dataset.id)
 
-let anidexBalise = $(".anidex")
-let modifierBalise = $(".modifier")
-let titreBalise = $(".titre")
+console.log(pageAmis)
 
-let btnMenu = document.querySelectorAll(".changement button")
-for (let i=0; i<btnMenu.length; i++) {
-    btnMenu[i].addEventListener("click", () => {
-        btnMenu.forEach(el => {
-            el.classList.remove("actif")
-            el.classList.add("nonActif")
+function swithBouton(pageAmis) {
+    let anidexBalise = $(".anidex")
+    let modifierBalise = $(".modifier")
+    let titreBalise = $(".titre")
+
+    let btnMenu = document.querySelectorAll(".changement button")
+    for (let i=0; i<btnMenu.length; i++) {
+        btnMenu[i].addEventListener("click", () => {
+            btnMenu.forEach(el => {
+                el.classList.remove("actif")
+                el.classList.add("nonActif")
+            })
+            btnMenu[i].classList.add("actif")
+            btnMenu[i].classList.remove("nonActif")
+            if (pageAmis) {
+                console.log("click amis")
+                anidexBalise.toggleClass("desac")
+                titreBalise.toggleClass("desac")
+            } else {
+                console.log("click Perso")
+                switch (i) {
+                    case 0:
+                        anidexBalise.removeClass("desac")
+                        modifierBalise.addClass("desac")
+                        titreBalise.addClass("desac")
+                        break
+                    case 1:
+                        anidexBalise.addClass("desac")
+                        modifierBalise.removeClass("desac")
+                        titreBalise.addClass("desac")
+                        break
+                    default:
+                        anidexBalise.addClass("desac")
+                        modifierBalise.addClass("desac")
+                        titreBalise.removeClass("desac")
+                }
+            }
         })
-        btnMenu[i].classList.add("actif")
-        btnMenu[i].classList.remove("nonActif")
-        if (i == 0) {
-            anidexBalise.removeClass("desac")
-            modifierBalise.addClass("desac")
-            titreBalise.addClass("desac")
-        } else if (i == 1) {
-            anidexBalise.addClass("desac")
-            modifierBalise.removeClass("desac")
-            titreBalise.addClass("desac")
-        } else {
-            anidexBalise.addClass("desac")
-            modifierBalise.addClass("desac")
-            titreBalise.removeClass("desac")
-        }
-    })
+    }
 }
+
+swithBouton(pageAmis)
 
 function affichageAnidex(listeAnime) {
     for (let i=0; i<listeAnime.length; i++) {
@@ -60,7 +79,7 @@ function affichageAnidex(listeAnime) {
     }
 }
 
-function affichageTitre(listeTitre) {
+function affichageTitrePerso(listeTitre) {
     for (let i=0; i<listeTitre.length; i++) {
         const titre = listeTitre[i]
         const zoneTitre = document.querySelector(".affichageTitre")
@@ -77,8 +96,17 @@ function affichageTitre(listeTitre) {
     }
 }
 
-
-
+function affichageTitreAmis(listeTitre) {
+    listeTitre.forEach(titre => {
+        if (listeTitreJ.includes(titre[0])) {
+            const zoneTitre = document.querySelector(".affichageTitre")
+            const btnTitre = document.createElement("article")
+            btnTitre.innerText = titre[1]
+            btnTitre.classList.add("fondActiver")
+            zoneTitre.append(btnTitre)
+        }
+    })
+}
 
 
 let listeAnime = []
@@ -88,13 +116,12 @@ listeIdAnime.forEach((anime_id) => {
 
 
 affichageAnidex(listeAnime)
-affichageTitre(listeTitreN)
+pageAmis ? affichageTitreAmis(listeTitreN) : affichageTitrePerso(listeTitreN)
 
 const listeGenre = ["Adventure","Drama","Fantasy","Action","Sci-Fi","Suspense","Comedy","Romance","Supernatural","Award Winning",
     "Mystery","Sports","Slice of Life","Ecchi","Gourmet","Horror","Avant Garde","Boys Love","Girls Love"
 ]
 
-console.log(listeGenre.length)
 
 const select = document.getElementById("trier")
 listeGenre.forEach((genre) => {
@@ -150,13 +177,13 @@ function btnTriage(listeAnime,listeTrier) {
             listeTrier.sort(function (a,b) {
                 return a.annee - b.annee
             })
-            $("#date img").attr("src" , "./images/angle-vers-le-haut.png")
+            $("#date img").attr("src" , "../images/angle-vers-le-haut.png")
             index1++
         } else {
             listeTrier.sort(function (a,b) {
                 return b.annee - a.annee
             })
-            $("#date img").attr("src" , "./images/angle-vers-le-bas.png")
+            $("#date img").attr("src" , "../images/angle-vers-le-bas.png")
             index1++
         }
         affichageAnidex(listeTrier)
@@ -168,13 +195,13 @@ function btnTriage(listeAnime,listeTrier) {
             listeTrier.sort(function (a,b) {
                 return b.note - a.note
             })
-            $("#note img").attr("src" , "./images/angle-vers-le-bas.png")
+            $("#note img").attr("src" , "../images/angle-vers-le-bas.png")
             index2++
         } else {
             listeTrier.sort(function (a,b) {
                 return a.note - b.note
             })
-            $("#note img").attr("src" , "./images/angle-vers-le-haut.png")
+            $("#note img").attr("src" , "../images/angle-vers-le-haut.png")
             index2++
         }
         affichageAnidex(listeTrier)
@@ -187,7 +214,7 @@ let btnTitreAll = document.querySelectorAll(".titre button")
 for (let i=0;i<btnTitreAll.length; i++) {
     btnTitreAll[i].addEventListener("click", () => {
         $(".compteTitre span").text(listeTitreN[i][1])
-        $(".badge").attr("src", "images/badge/titre"+listeTitreN[i][0]+".jpg")
+        $(".badge").attr("src", "../images/badge/titre"+listeTitreN[i][0]+".jpg")
         $.post('traitement.php', {titre: listeTitreN[i][0]})
     })
 }

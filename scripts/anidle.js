@@ -38,16 +38,6 @@ function filtre(annee,genres,themes,source) {
 }
 
 
-//fonction pour recuperer l'indice de l'anime rentré par le joueur
-function recupAnime(inputJoueur) {
-    for (let i=0;i<DonneeAnime.length;i++) {
-        if (DonneeAnime[i].nom.includes(inputJoueur)) {
-            return DonneeAnime[i]
-        }
-    }
-    return [[],,[],[],[],"",,"",,"",""]
-}
-
 //fonction gérant la validité de chaque valeur d'un anime et affichant le resultat
 function gestionValide(listeInput,animeDeviner) {
     let tbodyBalise = document.querySelector("tbody")
@@ -66,12 +56,12 @@ function gestionValide(listeInput,animeDeviner) {
                 }
             } else if (typeof valeur == "number") {
                     if (valeur > animeDeviner[cle]) {
-                        tr += `<td class="faux"> ${valeur} <img src="images/fleche_bas.png"></td>`
+                        tr += `<td class="faux"> ${valeur} <img src="../images/fleche_bas.png"></td>`
                     } else if (valeur == animeDeviner[cle]) {
                         tr += `<td class="valide"> ${valeur}</td>`
                     }
                     else {
-                        tr += `<td class="faux"> ${valeur} <img src="images/fleche_haut.png"></td>`
+                        tr += `<td class="faux"> ${valeur} <img src="../images/fleche_haut.png"></td>`
                     }
             } else {
                 if (cle === "nom" && listeInput.id == animeDeviner.id) {
@@ -194,7 +184,7 @@ function ajoutTitreGenre(listeCG,listeIdAnime,listeTitreJ) {
             const nbGenre = listeAnime.filter((anime) => anime.genre.includes(element[3])).length
             if (nbGenre >= element[2]) {
                 listeTitreJ.push(element[2])
-                $.post('traitement.php', {idTitre: element[0]})
+                $.post('../traitement.php', {idTitre: element[0]})
             }
         }
     })
@@ -219,15 +209,19 @@ function anidle(animeDeviner) {
     let zoneIndiceBalise = $(".zoneIndice")
 
     //Recup données base de donnée
+    console.log("liste1")
     let element = document.getElementById('monElement');
     let id = element.dataset.id;
     let anime_id = JSON.parse(id)
+    console.log("guess")
     let nbGuessElement = document.getElementById('nb_guess');
     let nbGuessId = nbGuessElement.dataset.id;
     let nbGuess = JSON.parse(nbGuessId)
+    console.log("listeCG")
     const listeCGBalise = document.getElementById("listeCG")
     let listeCGTemp = listeCGBalise.textContent
     let listeCG = JSON.parse(listeCGTemp)
+    console.log("listeT")
     const listeTitreJoueurBalise = document.getElementById("listeTitreJoueur")
     let listeTitreJTemp = listeTitreJoueurBalise.dataset.id
     let listeTitreJ = JSON.parse(listeTitreJTemp)
@@ -262,24 +256,23 @@ function anidle(animeDeviner) {
                     zoneIndiceBalise.addClass("desac")
                     if (rps == 'kamotama' || animeDeviner.id == animeInput.id) {
                         score++
-                        $.post('traitement.php', {serieEnCours: score})
+                        $.post('../traitement.php', {serieEnCours: score})
                         if (!anime_id.includes(animeDeviner.id)) {
-                            $.post('traitement.php', { nom: animeDeviner.id })
+                            $.post('../traitement.php', { nom: animeDeviner.id })
                             ajoutTitreGenre(listeCG,anime_id,listeTitreJ)
                             anime_id.push(animeDeviner.id)
                         }
                         nbGuess++
-                        $.post('traitement.php', {nb_guess: nbGuess})
+                        $.post('../traitement.php', {nb_guess: nbGuess})
                         if (score > scoreMax) {
-                            console.log("injection cookie")
-                            document.cookie = `score=${score}`
+                            $.post('../traitement.php', {score: score})
                         }
                     } else {
                         if (score > scoreMax) {
-                            document.cookie = `score=${score}`
+                            $.post('../traitement.php', {score: score})
                         }
                         score = 0
-                        $.post('traitement.php', {serieEnCours: score})
+                        $.post('../traitement.php', {serieEnCours: score})
                     }
                     scoreBalise.text(score)
                     conteneurScoreBalise.removeClass("desac")
@@ -391,14 +384,7 @@ function restartGuess() {
     return animeDeviner
 }
 
-
-//Recuperation de tout les nom des animes pour les inserer dans une liste
-for (let i=0; i<DonneeAnime.length; i++) {
-    listeNom.push(DonneeAnime[i].nom[0])
-    if (DonneeAnime[i].nom[1] != null) {
-        listeNom.push(DonneeAnime[i].nom[1])
-    }
-}
+recupNom()
 
 $(function() {
     $("#iptJoueur").autocomplete({

@@ -70,41 +70,16 @@ main {
     object-fit: contain;
 }
 
-form {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    margin-top: 25px;
-    width: 357px;
+.tremblement {
+    animation: tremblement 0.5s linear; /* 1s = durée du tremblement */
 }
-
-form input, form button {
-    height: 40px;
-    border-radius: 10px;
-    border: 2px solid rgb(61, 61, 61);
-    background: var(--fond-grisatre);
-    color: white;
-    padding: 5px;
-    text-align: center;
-}
-
-form input {
-    width: 65%;
-}
-
-form button {
-    width: 25%;
-    height: 54px;
-    border: 2px solid rgb(81, 81, 81);
-    background: rgb(61, 61, 61);
-}
-
-form button:hover {
-    cursor: pointer;
-}
-
-form input:focus {
-    border: 2px solid rgb(101, 101, 101);
+  
+@keyframes tremblement {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-5px, 5px); }
+    50% { transform: translate(5px, -5px); }
+    75% { transform: translate(-5px, -5px); }
+    100% { transform: translate(0, 0); }
 }
 
 .reponseJoueur {
@@ -115,7 +90,7 @@ form input:focus {
     color: white;    
 }
 
-p {
+.reponseJoueur p {
     border-top: 2px solid var(--background-noir-profond);
     width: 327px;
     padding: 15px;
@@ -125,47 +100,7 @@ p {
 
 .ui-autocomplete {
     width: 242px;
-    float: left;
-    padding: 5px 0;
-    margin: 2px 0 0;
-    list-style: none;
-    font-size: 14px;
-    text-align: left;
-    background-color: var(--fond-noir);
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 0px 0px 4px 4px;
-    max-height: 150px;
-    overflow-y: auto;
-    scrollbar-color: #d9d9d9 var(--fond-noir);
-}
-  
-.ui-autocomplete > li > div {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: normal;
-    line-height: 1.42857143;
-    color: white;
-    white-space: nowrap;
-}
-  
-.ui-state-hover,
-.ui-state-active,
-.ui-state-focus {
-    text-decoration: none;
-    background-color: #333333;
-    cursor: pointer;
-}
-  
-.ui-helper-hidden-accessible {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+
 }
 
 .popup {
@@ -262,4 +197,23 @@ p {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+@media screen and (max-width: 500px) {
+    .div70 {
+        width: 100%;
+    }
+
+    .conteneurCanva, .affiche {
+        width: 330px;
+        height: 462px;
+    }
+
+    form, .vie {
+        width: 330px;
+    }
+
+    .popup {
+        width: 90%;
+    }
 }
