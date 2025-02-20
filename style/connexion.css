@@ -48,17 +48,6 @@
   outline: 2px solid #007bff; /* Exemple de contour bleu */
 }
 
-form button {
-  margin: auto;
-  margin-top: 5%;
-  border-radius: 5px;
-  font-size: 20px;
-  min-width: 120px;
-}
-
-form button:hover {
-  cursor: pointer;
-}
 
 h2 {
   text-align: center;
@@ -221,6 +210,11 @@ a:hover {
   height: 100%;
   object-fit: cover;
   box-shadow: 5px 5px var(--fond-bouton-actif);
+  transition: all 0.4s ease-in-out;
+}
+
+#affichageAnidex article a img:hover {
+  transform: scale(1.05);
 }
 
 .anidex p {
@@ -332,10 +326,22 @@ a:hover {
   width: 60%;
   padding: 1.5%;
   margin: 1.5% 0%;
+  border-radius: 100rem;
+  border: 2px solid white;
 }
 
-.modifier fieldset {
-  width: 60%;
+.modifier form input:focus {
+  outline: none;
+  border: 2px solid blue;
+}
+
+.pfpChanger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+
 }
 
 .bgAffichage {
@@ -380,7 +386,7 @@ a:hover {
   align-items: center;
 }
 
-.menuPopup label, .menuPopup button, .btnDefaut {
+.menuPopup label, .menuPopup button, .btnDefaut, form button, form label {
   border-radius: 10px;
   border: 2px solid rgb(61, 61, 61);
   background: var(--fond-grisatre);
@@ -400,7 +406,7 @@ a:hover {
   width: 56px;
 }
 
-.btnDefaut {
+.btnDefaut, form button, form label {
   background: white;
   color: black;
   display: block;
@@ -411,7 +417,11 @@ a:hover {
   transition: all 0.4s ease-in-out;
 }
 
-.btnDefaut:hover {
+form button {
+  margin-top: 5%;
+}
+
+.btnDefaut:hover, form button:hover, form label:hover {
   background: rgb(221, 221, 221);
 }
 

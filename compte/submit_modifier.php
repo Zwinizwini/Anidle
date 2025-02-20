@@ -70,13 +70,15 @@ if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] === 0) {
     // Testons, si l'extension n'est pas autorisée
     $fileInfo = pathinfo($_FILES['pfp']['name']);
     $extension = $fileInfo['extension'];
-    $allowedExtensions = ['jpg', 'jpeg', 'png'];
+    $allowedExtensions = ['jpg', 'jpeg', 'png','PNG'];
     if (!in_array($extension, $allowedExtensions)) {
         echo "L'envoi n'a pas pu être effectué, l'extension {$extension} n'est pas autorisée";
         return;
     }
     // Testons, si le dossier uploads est manquant
-    $path = __DIR__ . '/uploads/';
+    $path = realpath(__DIR__ . '/../uploads/');
+    $path = $path . '/';
+    echo $path;
     if (!is_dir($path)) {
         echo "L'envoi n'a pas pu être effectué, le dossier uploads est manquant";
         return;
@@ -108,6 +110,9 @@ if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] === 0) {
     // On peut valider le fichier et le stocker définitivement
     $cheminPhoto = $path . $_SESSION['LOGGED_USER']['pseudo'] . '.' . $extension;
     $photo = 'uploads/'. $_SESSION['LOGGED_USER']['pseudo'] . '.' . $extension;
+    echo $cheminPhoto;
+    echo '//////';
+    echo $photo;
     if ($width === $height) {
         move_uploaded_file($imageDef, $cheminPhoto);
     } else {
