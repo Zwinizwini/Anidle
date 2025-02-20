@@ -14,7 +14,7 @@ require_once(__DIR__ . '/mysql/connect.php');
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
     <script src="scripts/table.js" defer></script>
-    <script src="scripts/listeAmis.js" defer></script>
+    <script src="scripts/script.js" defer></script>
     
 </head>
 <body>
@@ -71,6 +71,5 @@ require_once(__DIR__ . '/mysql/connect.php');
         require_once('footer.php');
     ?>
            
-    
 </body>
 </html>

@@ -6,7 +6,7 @@ form {
     width: 357px;
 }
 
-form input, form button {
+form input, form button, #skip {
     height: 40px;
     border-radius: 10px;
     border: 2px solid rgb(61, 61, 61);
@@ -20,7 +20,7 @@ form input {
     width: 65%;
 }
 
-form button {
+form button, #skip {
     width: 25%;
     height: 54px;
     border: 2px solid rgb(81, 81, 81);
@@ -33,6 +33,13 @@ form button:hover {
 
 form input:focus {
     border: 2px solid rgb(101, 101, 101);
+}
+
+#skip {
+    margin: auto;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 150px;
 }
 
 .ui-autocomplete {

@@ -11,7 +11,7 @@ let player1;
   function onYouTubeIframeAPIReady() {
 
 
-      const play = document.getElementById("youtube-icon1")
+      const play = document.getElementById("bouton")
       play.onclick = toggleAudio1;
 
       player1 = new YT.Player('youtube-player1', {
@@ -29,29 +29,24 @@ let player1;
       });
   } 
 
-  function togglePlayButton1(play) {    
-    document.getElementById("youtube-icon1").src = play ? "../images/pause.png" : "../images/bouton-jouer.png";
-  }
 
   function toggleAudio1() {
     if ( player1.getPlayerState() == 1 || player1.getPlayerState() == 3 ) {
       player1.pauseVideo(); 
-      togglePlayButton1(false);
     } else {
       player1.playVideo(); 
-      togglePlayButton1(true);
     } 
   }  
 
   function onPlayerReady1(event) {
     event.target.setVolume(10);
     player1.setPlaybackQuality("small");
-    togglePlayButton1(player1.getPlayerState() == 5);
   }
 
   function onPlayerStateChange1(event) {
     if (event.data === 0) {
-      togglePlayButton1(false); 
+      const check = document.getElementById("bouton");
+      check.checked = true 
     }
   }
 

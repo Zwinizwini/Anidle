@@ -24,7 +24,7 @@ $bestScore = $bestScoreStatement->fetchAll();
 
 if(isset($_SESSION['LOGGED_USER'])) {
 
-    $listeUserNonAmisStatement = $mysqlClient->prepare('SELECT u.pseudo, u.pfp, u.id FROM users u WHERE u.id != 1 AND u.id NOT IN (SELECT uid2 FROM listeamis WHERE uid1=:id)');
+    $listeUserNonAmisStatement = $mysqlClient->prepare('SELECT u.pseudo, u.pfp, u.id FROM users u WHERE u.id !=:id AND u.id NOT IN (SELECT uid2 FROM listeamis WHERE uid1=:id)');
     $listeUserNonAmisStatement->execute([
         'id' => $_SESSION['LOGGED_USER']['id']
     ]);

@@ -109,7 +109,7 @@ async function recupImage(animeId,resultat) {
         let imageBalsie = document.querySelector(".resultat img")
         imageBalsie.src = lienImage
       } else {
-        $(".image-indice img").attr("style","")
+        $(".image-indice img").removeClass("visible")
         let imageBalsie = document.querySelector(".zoneIndice img")
         imageBalsie.src = lienImage
       }
@@ -152,7 +152,7 @@ async function recupPerso(animeId) {
                 favorite = perso.favorites
             }
         })
-        $(".perso p").attr("style","")
+        $(".perso p").removeClass("visible")
         document.getElementById("review").innerText = personnage.replace(/(.*), (.*)/, "$2 $1")
     } catch (error) {
         console.error('Error fecthing data:',error)
@@ -163,8 +163,8 @@ async function recupURLTrailer(animeURL) {
     if(animeURL == "null") {
         changerVideo("dQw4w9WgXcQ")
     } else {
-        $("#volume").attr("style","")
-        $("#youtube-icon1").attr("style","")
+        $("#volume").removeClass("visible")
+        $(".cercle").removeClass("visible")
         changerVideo(animeURL)
     }
 }
@@ -209,28 +209,28 @@ function anidle(animeDeviner) {
     let zoneIndiceBalise = $(".zoneIndice")
 
     //Recup données base de donnée
-    console.log("liste1")
-    let element = document.getElementById('monElement');
-    let id = element.dataset.id;
-    let anime_id = JSON.parse(id)
-    console.log("guess")
-    let nbGuessElement = document.getElementById('nb_guess');
-    let nbGuessId = nbGuessElement.dataset.id;
-    let nbGuess = JSON.parse(nbGuessId)
-    console.log("listeCG")
-    const listeCGBalise = document.getElementById("listeCG")
-    let listeCGTemp = listeCGBalise.textContent
-    let listeCG = JSON.parse(listeCGTemp)
-    console.log("listeT")
-    const listeTitreJoueurBalise = document.getElementById("listeTitreJoueur")
-    let listeTitreJTemp = listeTitreJoueurBalise.dataset.id
-    let listeTitreJ = JSON.parse(listeTitreJTemp)
-    const serieEnCours = $("#serie_enCour").data().id
-    if (serieEnCours != 0) {
-        score = serieEnCours
-        scoreBalise.text(score)
+    let anime_id,nbGuess,listeCG,listeTitreJ
+    const connecter = JSON.parse(document.getElementById("connecter").dataset.id)
+    console.log("co : " + connecter)
+    if (connecter) {
+        let element = document.getElementById('monElement');
+        let id = element.dataset.id;
+        anime_id = JSON.parse(id)
+        let nbGuessElement = document.getElementById('nb_guess');
+        let nbGuessId = nbGuessElement.dataset.id;
+        nbGuess = JSON.parse(nbGuessId)
+        const listeCGBalise = document.getElementById("listeCG")
+        let listeCGTemp = listeCGBalise.textContent
+        listeCG = JSON.parse(listeCGTemp)
+        const listeTitreJoueurBalise = document.getElementById("listeTitreJoueur")
+        let listeTitreJTemp = listeTitreJoueurBalise.dataset.id
+        listeTitreJ = JSON.parse(listeTitreJTemp)
+        const serieEnCours = $("#serie_enCour").data().id
+        if (serieEnCours != 0) {
+            score = serieEnCours
+            scoreBalise.text(score)
+        }
     }
-
     
     //Action a effectuer lorsque l'utilisateur valide sa réponse
     $(".proposition").on("submit", function (event) {
@@ -255,24 +255,30 @@ function anidle(animeDeviner) {
                     suiteBalise.removeClass("desac")
                     zoneIndiceBalise.addClass("desac")
                     if (rps == 'kamotama' || animeDeviner.id == animeInput.id) {
+                        console.log("passage gagné")
                         score++
-                        $.post('../traitement.php', {serieEnCours: score})
-                        if (!anime_id.includes(animeDeviner.id)) {
-                            $.post('../traitement.php', { nom: animeDeviner.id })
-                            ajoutTitreGenre(listeCG,anime_id,listeTitreJ)
-                            anime_id.push(animeDeviner.id)
-                        }
-                        nbGuess++
-                        $.post('../traitement.php', {nb_guess: nbGuess})
-                        if (score > scoreMax) {
-                            $.post('../traitement.php', {score: score})
+                        if (connecter) {
+                            console.log("passage connecter vrai")
+                            $.post('../traitement.php', {serieEnCours: score})
+                            if (!anime_id.includes(animeDeviner.id)) {
+                                $.post('../traitement.php', { nom: animeDeviner.id })
+                                ajoutTitreGenre(listeCG,anime_id,listeTitreJ)
+                                anime_id.push(animeDeviner.id)
+                            }
+                            nbGuess++
+                            $.post('../traitement.php', {nb_guess: nbGuess})
+                            if (score > scoreMax) {
+                                $.post('../traitement.php', {score: score})
+                            }
                         }
                     } else {
-                        if (score > scoreMax) {
-                            $.post('../traitement.php', {score: score})
+                        if (connecter) {
+                            if (score > scoreMax) {
+                                $.post('../traitement.php', {score: score})
+                            }
+                            $.post('../traitement.php', {serieEnCours: 0})
                         }
                         score = 0
-                        $.post('../traitement.php', {serieEnCours: score})
                     }
                     scoreBalise.text(score)
                     conteneurScoreBalise.removeClass("desac")
@@ -313,9 +319,9 @@ function anidle(animeDeviner) {
 
     //Recuperation des boutons d'indice
     let btnIndice = document.querySelectorAll(".indice button")
-    btnIndice[0].disabled = true
-    btnIndice[1].disabled = true
-    btnIndice[2].disabled = true
+    btnIndice[0].disabled = false
+    btnIndice[1].disabled = false
+    btnIndice[2].disabled = false
     //Action pour bouton indice
     for (let i = 0; i < btnIndice.length; i++ ) {
         btnIndice[i].addEventListener("click", () => {
@@ -366,10 +372,10 @@ function restartGuess() {
     $("#review").text("")
     $("#zoneIndice").addClass("desac")
 
-    $(".image-indice img").attr("style","visibility: hidden;")
-    $(".perso p").attr("style","visibility: hidden;")
-    $("#volume").attr("style","visibility: hidden;")
-    $("#youtube-icon1").attr("style","visibility: hidden;")
+    $(".image-indice img").addClass("visible")
+    $(".perso p").addClass("visible")
+    $("#volume").addClass("visible")
+    $(".cercle").addClass("visible")
 
     let btnIndice = document.querySelectorAll(".indice button")
     btnIndice.forEach(btn => {

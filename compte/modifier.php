@@ -12,4 +12,7 @@
                 </fieldset>
                 <button typ="submit">Envoyer</button>
             </form>
+            <h2>Modifier le background</h2>
+            <div class="bgAffichage"></div>
+            <button class="btnDefaut animate__animated">Par Defaut</button>
        </div>

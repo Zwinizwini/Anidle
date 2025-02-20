@@ -66,12 +66,12 @@ function affichageUser(liste,index,pageIndex) {
 }
 affichageUser(listeAmis,0,pageIndex)
 affichageUser(autreUserListe,1,pageIndex)
-$(`[data_id='${1}']`).addClass("listeUtilisateurDesac")
+$(`[data_id='${1}']`).addClass("desac")
 affichageUser(demandeRecue,2,pageIndex)
-$(`[data_id='${2}']`).addClass("listeUtilisateurDesac")
+$(`[data_id='${2}']`).addClass("desac")
 
 
-function ajoutAmis() {
+function ajoutAmis(pageIndex) {
     const boutonAjoutAmis = document.querySelectorAll(".ajoutAmis")
     console.log(boutonAjoutAmis)
     boutonAjoutAmis.forEach(bouton => {
@@ -79,10 +79,12 @@ function ajoutAmis() {
             console.log("click")
             const idDemande = this.dataset.id
             if (demandeEnvoieListe.some(objet => objet.uid_recue == idDemande)) {
-                alert("Demande deja envoye")
+                alert("Demande deja envoyé")
             } else {
-                $.post('ajoutAmis.php', {idDemande: idDemande})
+                alert("Demande d'amis envoyé")
+                pageIndex ? $.post('ajoutAmis.php', {idDemande: idDemande}) : $.post('../ajoutAmis.php', {idDemande: idDemande})
                 demandeEnvoieListe.push({uid_recue: idDemande})
+                console.log('envoie de demande')
             }
         })
     })
@@ -98,10 +100,10 @@ for (let i=0;i<boutonAccepter.length;i++) {
         const idAccepter = this.dataset.id
         $(`div[data_user=${idAccepter}]`).remove()
         if (i%2 == 0) {
-            $.post('ajoutAmis.php', {idAccepter: idAccepter})
+            pageIndex ? $.post('ajoutAmis.php', {idAccepter: idAccepter}) : $.post('../ajoutAmis.php', {idAccepter: idAccepter})
             listeAmis.push(demandeRecue.find(personne => personne.id == idAccepter))
         } else {
-            $.post('ajoutAmis.php', {idReffuser: idAccepter})
+            pageIndex ? $.post('ajoutAmis.php', {idReffuser: idAccepter}) : $.post('../ajoutAmis.php', {idReffuser: idAccepter})
         }
         
     })
@@ -111,8 +113,6 @@ const divAmis = $(".amis")
 divAmis.on('click', () => {
     $("#cache").toggleClass("etendu")
     $("#bouttonAmis").toggleClass("entenduBoutton")
-    $("#descendre").toggleClass("compteTel")
-    $("#monter").toggleClass("compteTel")
 })
 
 
@@ -127,23 +127,23 @@ for (let i=0;i<bouttonAmis.length;i++) {
         bouttonAmis[i].classList.remove("nonActif")
         switch (i) {
             case 0:
-                $(`[data_id='${0}']`).removeClass("listeUtilisateurDesac")
-                $(`[data_id='${1}']`).addClass("listeUtilisateurDesac")
-                $(`[data_id='${2}']`).addClass("listeUtilisateurDesac")
+                $(`[data_id='${0}']`).removeClass("desac")
+                $(`[data_id='${1}']`).addClass("desac")
+                $(`[data_id='${2}']`).addClass("desac")
                 affichageUser(listeAmis,0,pageIndex)
                 break
             case 1:
-                $(`[data_id='${1}']`).removeClass("listeUtilisateurDesac")
-                $(`[data_id='${0}']`).addClass("listeUtilisateurDesac")
-                $(`[data_id='${2}']`).addClass("listeUtilisateurDesac")
+                $(`[data_id='${1}']`).removeClass("desac")
+                $(`[data_id='${0}']`).addClass("desac")
+                $(`[data_id='${2}']`).addClass("desac")
                 break
             case 2:
-                $(`[data_id='${2}']`).removeClass("listeUtilisateurDesac")
-                $(`[data_id='${1}']`).addClass("listeUtilisateurDesac")
-                $(`[data_id='${0}']`).addClass("listeUtilisateurDesac")
+                $(`[data_id='${2}']`).removeClass("desac")
+                $(`[data_id='${1}']`).addClass("desac")
+                $(`[data_id='${0}']`).addClass("desac")
                 break
         }
     })
 }
 
-ajoutAmis()
+ajoutAmis(pageIndex)

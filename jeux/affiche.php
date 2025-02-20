@@ -8,7 +8,6 @@
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/script.js" defer></script>
     <script src="../scripts/affiche.js" defer></script>
-    <script src="../scripts/listeAmis.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="../style/style.css">
@@ -39,6 +38,7 @@
                 <input type="text" id="iptJoueur" placeholder="Entrez un Anime">
                 <button id="btnValider">Valider</button>
             </form>
+            <button id="skip">Skip</button>
             <div class="reponseJoueur"></div>
        </div> 
     </main>

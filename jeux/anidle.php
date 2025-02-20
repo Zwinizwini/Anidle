@@ -15,7 +15,6 @@ require_once('../mysql/connect.php');
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/script.js" defer></script>
     <script src="../scripts/video.js" defer></script>
-    <script src="../scripts/listeAmis.js" defer></script>
     <script type="module" src="../scripts/anidle.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +34,12 @@ require_once('../mysql/connect.php');
     <div id="nb_guess" data-id="<?php echo json_encode($nb_guess); ?>" style="display: none"></div>
     <div id="listeCG" style="display: none"><?php echo json_encode($listeCG); ?></div>
     <div id="listeTitreJoueur" data-id="<?php echo json_encode($listeT); ?>" style="display: none"></div>
-    <div id="serie_enCour" data-id="<?php echo $_SESSION['LOGGED_USER']['serie_enCour']; ?>" style="display: none"></div>
+    <?php if(isset($_SESSION['LOGGED_USER'])):?>
+        <div id="serie_enCour" data-id="<?php echo $_SESSION['LOGGED_USER']['serie_enCour']; ?>" style="display: none"></div>
+        <div id="connecter" data-id="<?php echo json_encode(true); ?>" style="display: none"></div> 
+    <?php else:?>
+        <div id="connecter" data-id="<?php echo json_encode(false); ?>" style="display: none"></div> 
+    <?php endif;?>
 
     <div id="pageIndex" data-id="<?php echo json_encode(false); ?>" style="display: none"></div>
     <?php require_once('../header.php');?>
@@ -48,17 +52,35 @@ require_once('../mysql/connect.php');
             </div>
             <div class="zoneIndice desac" id="zoneIndice">
                 <div class="image-indice">
-                    <img alt="Image Indice" style="visibility: hidden;">
+                    <img alt="Image Indice" class="visible">
                 </div>
                 <div class="trailer-review">
                     <div id="youtube-audio1" style="display: block;">
                         <h2>Son du Trailer :</h2>
-                        <input type="range" min="0" max ="100" id="volume" name="volume" step="1" value="10" style="visibility: hidden;">
-                        <img id="youtube-icon1" src="" style="visibility: hidden;"/><div id="youtube-player1"></div>
+                        <div class="controle-video">
+                            <input type="range" min="0" max="100" id="volume" name="volume" value="10" oninput="slider()" class="visible">
+                            <input type="checkbox" id="bouton" name="bouton">
+                            <label for="bouton" class="cercle visible">
+                                <div class="play_gauche"></div>
+                                <div class="play_droite">
+                                    <div class="haut"></div>
+                                    <div class="bas"></div>
+                                </div>
+                            </label>
+                        </div>
+                        <script>
+                            const mySlider = document.getElementById("volume");
+
+                            function slider(){
+                                mySlider.style.background = `linear-gradient(to right, #3264fe ${mySlider.value}%, #d5d5d5 ${mySlider.value}%)`;
+                            }
+                            slider();
+                        </script>
+                        <div id="youtube-player1"></div>
                     </div>
                     <div class="perso">
                         <h2>Personnage :</h2>
-                        <p id="review" class="review" style="visibility: hidden;"></p>
+                        <p id="review" class="review visible"></p>
                     </div>
                     
                 </div>

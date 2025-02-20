@@ -27,6 +27,10 @@ main {
     object-fit: contain;
 }
 
+.affiche {
+    background-color: black;
+}
+
 .blur {
     filter: blur(15px);
 }

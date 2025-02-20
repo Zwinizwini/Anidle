@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/connexion.css">
     <link rel="icon" type="image/png" href="../images/logo.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/anidex.js" defer></script>
-    <script src="../scripts/listeAmis.js" defer></script>
+    <script src="../scripts/script.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>

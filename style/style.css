@@ -6,11 +6,17 @@
     font-family: "Monstserrat", sans-serif;
 }
 
-
+html {
+    height: 100%;
+}
 
 body {
     background-color: var(--background-noir-profond);
     color: var(--ecriture-rouge);
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 #titreRouge {
@@ -66,6 +72,7 @@ main {
 
 .tableauScore tbody {
     border-top: 1px black solid;
+    background: rgb(46, 46, 46);
 }
 
 .pfp {
@@ -87,10 +94,6 @@ nav {
     justify-content: space-between;
     padding: 0.5% 1%;
     margin-bottom: 50px;
-}
-
-.compteTel {
-    display: none;
 }
 
 a {
@@ -161,7 +164,7 @@ a {
     color: rgb(129, 129, 129);
 }
 
-#DataTables_Table_0_info, .dt-search {
+#DataTables_Table_0_info, .dt-search, .compteTel {
     display: none;
 }
 
@@ -169,6 +172,8 @@ table.dataTable > tbody > tr > th, table.dataTable > tbody > tr > td {
     padding: 5px !important;
     box-sizing:content-box;
 }
+
+
 
 .dt-type-numeric {
     text-align: center !important;
@@ -195,6 +200,36 @@ footer {
     justify-content: space-around;
     align-items: center;
 }
+.click {
+    display: flex;
+    gap: 17px;
+    width: 32px;
+    height: 32px;
+}
+  
+.gauche, .droite {
+    height: 35.78px;
+    width: 5px;
+    border-radius: 100rem;
+    background-color: white;
+    transition: transform 0.4s;
+}
+  
+.gauche {
+    transform: rotate(45deg);
+}
+  
+.droite {
+    transform: rotate(-45deg);
+}
+  
+.bas_gauche {
+    transform: rotate(135deg);
+}
+  
+.bas_droite {
+    transform: rotate(-135deg);
+}
 
 .cache {
     overflow: hidden;
@@ -218,7 +253,7 @@ footer {
     height: 30px;
 }
 
-.listeUtilisateurDesac {
+.desac {
     display: none !important;
 }
 
@@ -299,7 +334,7 @@ footer {
 }
   
 
-#bouttonAmis button:hover, .divBoutton button:hover{
+#bouttonAmis button:hover, .divBoutton button:hover, .amis:hover{
     cursor: pointer;
 }
   

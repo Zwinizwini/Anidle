@@ -63,21 +63,57 @@ function viePerdu(tentative) {
     }, 1000);
 }
 
+function moinsFlouPixel(tentative,jeu) {
+    viePerdu(tentative)
+    tentative++
+    if (tentative == 7) {
+        $(`[data_coeur='${1}']`).addClass("animate__heartBeat animate__infinite")
+        $(`[data_coeur='${0}']`).addClass("animate__heartBeat animate__infinite")
+        $(`[data_coeur='${2}']`).addClass("animate__heartBeat animate__infinite")
+    }
+    console.log("taille pix : "+Math.floor(50/tentative+1))
+    switch (jeu) {
+        case 'Pixel':
+            pixelImage(Math.floor(50/tentative+1))
+            break
+        case 'Pixel-Invert':
+            pixelImage(Math.floor(50/tentative+1))
+            break
+        case 'Flou-Invert': 
+            $(".blur").css('filter', `invert(1) blur(${15-tentative}px)`)
+            break
+        default:
+            $(".blur").css('filter', `blur(${15-tentative}px)`)
+    }
+    return tentative
+}
+
+function perdu(tentative,jeu) {
+    if (tentative == 9) {
+        viePerdu(tentative)
+        $(`[data_coeur='${1}']`).removeClass("animate__heartBeat animate__infinite")
+        $(`[data_coeur='${0}']`).removeClass("animate__heartBeat animate__infinite")
+        $(`[data_coeur='${2}']`).removeClass("animate__heartBeat animate__infinite")
+        switchImageCanva()
+    } else {
+        return moinsFlouPixel(tentative,jeu)
+    }
+}
+
 function jeuAffiche(animeDeviner,jeu) {
     
-    let score = 0
     let tentative = 0
     const imageDeviner = $(".affiche img")
     imageDeviner.attr("src",animeDeviner.img)
     switch (jeu) {
         case 'Pixel':
             document.querySelector(".conteneurCanva").classList.toggle("desac")
-            pixelImage(50)
+            pixelImage(60)
             break
         case 'Pixel-Invert':
             $("#monCanvas").addClass("invert")
             document.querySelector(".conteneurCanva").classList.toggle("desac")
-            pixelImage(50)
+            pixelImage(60)
             break
         case 'Flou-Invert': 
             $(".affiche img").addClass("blur-invert")
@@ -91,7 +127,6 @@ function jeuAffiche(animeDeviner,jeu) {
 
 
     $("form").on('submit', function(event) {
-        console.log(tentative)
         event.preventDefault()
         const iptJoueur = $("#iptJoueur").val()
         $("#iptJoueur").val('')
@@ -105,36 +140,19 @@ function jeuAffiche(animeDeviner,jeu) {
             $(".reponseJoueur").prepend(animeParagraphe)
 
             if (animeIpt.id == animeDeviner.id) {
-                score++
-                switchImageCanva()
-            } else if (tentative == 9) {
-                viePerdu(tentative)
-                score=0
+                $(`[data_coeur='${1}']`).removeClass("animate__heartBeat animate__infinite")
+                $(`[data_coeur='${0}']`).removeClass("animate__heartBeat animate__infinite")
+                $(`[data_coeur='${2}']`).removeClass("animate__heartBeat animate__infinite")
                 switchImageCanva()
             } else {
-                viePerdu(tentative)
-                tentative++
-                if (tentative == 7) {
-                    $(`[data_coeur='${1}']`).addClass("animate__heartBeat animate__infinite")
-                    $(`[data_coeur='${0}']`).addClass("animate__heartBeat animate__infinite")
-                    $(`[data_coeur='${2}']`).addClass("animate__heartBeat animate__infinite")
-                }
-                switch (jeu) {
-                    case 'Pixel':
-                        pixelImage(Math.floor(50/tentative+1))
-                        break
-                    case 'Pixel-Invert':
-                        pixelImage(Math.floor(50/tentative+1))
-                        break
-                    case 'Flou-Invert': 
-                        $(".blur").css('filter', `invert(1) blur(${15-tentative}px)`)
-                        break
-                    default:
-                        $(".blur").css('filter', `blur(${15-tentative}px)`)
-                }
+                tentative = perdu(tentative,jeu)
             }
         }
 
+    })
+
+    $('#skip').on('click', () => {
+        tentative = perdu(tentative,jeu)
     })
 
     $(".afficheSuivante").on("click", () => {
@@ -167,6 +185,7 @@ function jeuAffiche(animeDeviner,jeu) {
         }
         viePleine()
     })
+
     
 }
 
