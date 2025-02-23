@@ -41,3 +41,8 @@ function setBackgroundImage() {
 window.addEventListener('DOMContentLoaded', setBackgroundImage);
 // localStorage.removeItem('backgroundImage')
 
+
+
+
+
+

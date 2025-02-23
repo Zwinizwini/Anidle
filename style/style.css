@@ -101,6 +101,92 @@ a {
     text-decoration: none;
 }
 
+.btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 2;
+    background-color: var(--fond-grisatre);
+    padding: 0px 3px;
+    border-radius: 5px;
+    position: absolute;
+    top: 5px;
+    left: 2px;
+}
+  
+.hautMenu, .milieu, .basMenu {
+    border: 2px solid white;
+    border-radius: 100rem;
+    transition: all 0.4s ease-in-out;
+}
+  
+.hautTransform {
+    transform: translateY(13.2px) rotate(-45deg);
+}
+  
+.milieuTransform {
+    transform: rotate(45deg);
+}
+  
+.basTransform {
+    opacity: 0;
+}
+
+.menuDeroulant {
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 0px;
+    transition: all 1s ease;
+    background-color: var(--fond-grisatre);
+    overflow-y: auto;
+    z-index: 1;
+    padding-top: 50px;
+}
+
+.menuEtendu {
+    width: 250px;
+}
+
+.opacity {
+    opacity: 1 !important;
+}
+
+.lienDeroulant {
+    width: 100%;
+    text-align: center;
+    font-size: 1.3rem;
+    border-bottom: 2px solid var(--background-noir-profond);
+    display: block;
+    padding: 10px 0px;
+}
+
+.menuDeroulant a {
+    color: white !important;
+}
+
+.menuDeroulant h2 {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.menuDeroulant img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+#compteTel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
 .image, .compteIcone {
     width: 64px;
     height: 64px;
@@ -164,7 +250,7 @@ a {
     color: rgb(129, 129, 129);
 }
 
-#DataTables_Table_0_info, .dt-search, .compteTel {
+#DataTables_Table_0_info, .dt-search, .Tel {
     display: none;
 }
 
@@ -185,12 +271,12 @@ table.dataTable > tbody > tr > th, table.dataTable > tbody > tr > td {
 }
 
 
-footer {
+.footer {
     position: fixed;
     bottom: 0px;
 }
 
-.amis {
+.amis,.amisDeroulant {
     background-color: var(--fond-grisatre);
     height: 45px;
     width: 250px;
@@ -200,7 +286,7 @@ footer {
     justify-content: space-around;
     align-items: center;
 }
-.click {
+.click, .clickDeroulant {
     display: flex;
     gap: 17px;
     width: 32px;
@@ -380,19 +466,40 @@ footer {
 
 
 @media screen and (max-width: 1000px){
-    .compteIcone a:first-child {
+    .compteIcone {
         display: none;
     }
 
-    .compteTel {
+    .footer {
+        z-index: 1;
+        opacity: 0;
+        transition: all 1s ease;
+    }
+
+    .menuFond {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #a5a5a563;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+    }
+
+    .listeUtilisateur {
+        border-top: 2px solid var(--background-noir-profond);
+    }
+
+    .cache, .amis {
+        box-shadow: none;
+    }
+
+    .Tel {
         display: flex;
-        color: white;
-        font-size: 1rem;
     }
 
     nav {
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
     }
 
     .image {
@@ -424,3 +531,4 @@ footer {
         font-size: 25px;
     }
 }
+

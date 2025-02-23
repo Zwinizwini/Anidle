@@ -15,7 +15,6 @@ require_once(__DIR__ . '/mysql/connect.php');
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
     <script src="scripts/table.js" defer></script>
     <script src="scripts/script.js" defer></script>
-    
 </head>
 <body>
     <header>
@@ -23,10 +22,44 @@ require_once(__DIR__ . '/mysql/connect.php');
             <div class="image">
                 <a href="index.php"><img src="images/logo.png"></a>
             </div>
+            <div class="btn Tel">
+                <div class="hautMenu"></div>
+                <div class="milieu"></div>
+                <div class="basMenu"></div>
+            </div>  
+            <div class="menuFond desac">
+            </div>
+            <div class="menuDeroulant">
+                <a href="index.php" class='lienDeroulant'>Accueil</a>
+                <a href="compte/compte.php" id='compteTel' class='lienDeroulant'><img src=<?php echo (isset($_SESSION['LOGGED_USER'])) ? $_SESSION['LOGGED_USER']['pfp'] :  "images/utilisateur.png"?> alt="compte">Compte</a>
+            </div>
+            <script>
+                const menuFond = document.querySelector('.menuFond')
+                console.log(menuFond);
+                console.log(document.querySelector('.btn'));
+                console.log(document.querySelector('.hautMenu'));
+                console.log(document.querySelector('.milieu'));
+                console.log(document.querySelector('.basMenu'));
+                console.log(document.querySelector('.menuDeroulant'));
+                console.log(document.querySelector('.footer'));
+                function menu() {
+                    document.querySelector('.hautMenu').classList.toggle('hautTransform')
+                    document.querySelector('.milieu').classList.toggle('milieuTransform')
+                    document.querySelector('.basMenu').classList.toggle('basTransform')
+                    document.querySelector('.menuDeroulant').classList.toggle('menuEtendu')
+                    document.querySelector('.footer').classList.toggle('opacity')
+                    menuFond.classList.toggle('desac')
+                }
+                document.querySelector('.btn').addEventListener('click', () => {                    
+                    menu()
+                })
+                menuFond.addEventListener('click', () => {
+                    menu()
+                })
+            </script>
             <a href="index.php" id="titreRouge"><h1>Zwinidle</h1></a>
             <div class="compteIcone">
                 <a href="compte/compte.php"><img src=<?php echo (isset($_SESSION['LOGGED_USER'])) ?  $_SESSION['LOGGED_USER']['pfp'] :  "images/utilisateur.png"?> alt="compte"></a>
-                <a href="compte/compte.php" class="compteTel">Compte</a>
             </div>
             
         </nav>
@@ -66,10 +99,12 @@ require_once(__DIR__ . '/mysql/connect.php');
         
     </main>
 
-    <?php 
-        $pageIndex = true;
-        require_once('footer.php');
-    ?>
+    <div class='footer' id="footer">
+        <?php 
+            $pageIndex = true;
+            require('footer.php');
+        ?>
+    </div>
            
 </body>
 </html>

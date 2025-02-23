@@ -42,7 +42,12 @@ require_once('../mysql/connect.php');
     <?php endif;?>
 
     <div id="pageIndex" data-id="<?php echo json_encode(false); ?>" style="display: none"></div>
-    <?php require_once('../header.php');?>
+    <header>
+        <nav>
+            <?php require_once('../header.php');?>
+        </nav>
+    </header>
+    
 
     <main class="d-flex">
         <div class="div70 d-flex">
@@ -119,10 +124,12 @@ require_once('../mysql/connect.php');
             </table>
         </div>
     </main>
-    <?php 
-        $pageIndex = false;
-        require_once('../footer.php');
-    ?>
+    <div class='footer' id="footer">
+        <?php 
+            $pageIndex = false;
+            require('../footer.php');
+        ?>
+    </div>
 
     <div class="popupBackground">
         <div class="popup ">

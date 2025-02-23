@@ -1,3 +1,6 @@
+<?php require_once('../mysql/connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +25,11 @@
     </script>
 </head>
 <body>
-    <?php require_once('../header.php');?>
+    <header>
+        <nav>
+            <?php require_once('../header.php');?>
+        </nav>
+    </header>
     <div id="pageIndex" data-id="<?php echo json_encode(false); ?>" style="display: none"></div>
     <main>
        <div class="div70">
@@ -42,10 +49,12 @@
             <div class="reponseJoueur"></div>
        </div> 
     </main>
-    <?php 
-        $pageIndex = false;
-        require_once('../footer.php');
-    ?>
+    <div class='footer' id="footer">
+        <?php 
+            $pageIndex = false;
+            require('../footer.php');
+        ?>
+    </div>
 </body>
 
 <div class="popupBackground">

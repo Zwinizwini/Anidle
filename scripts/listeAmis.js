@@ -8,7 +8,7 @@ const pageIndex = JSON.parse(document.getElementById('pageIndex').dataset.id)
 
 
 function affichageUser(liste,index,pageIndex) {
-    $(`[data_id='${index}']`).empty()
+    $(`[data_id='${index}']`).remove()
     const divIndex = $("<div>", {
         class: "listeUtilisateur",
         data_id: index

@@ -1,11 +1,6 @@
 @import url(variable.css);
 
 
-.desac {
-  display: none !important;
-}
-
-
 /* Div principal  */
 .conteneur {
   background: var(--fond-grisatre);
@@ -164,7 +159,7 @@ a:hover {
 }
 
 .changement button {
-  min-width: 120px;
+  width: 120px;
   border-radius: 0px;
   font-size: 20px;
   color: white;
@@ -292,7 +287,7 @@ a:hover {
 
 .top {
   position: fixed;
-  left: 95.5%;
+  right: 2%;
   bottom: 10px;
   background: var(--fond-grisatre);
   border-radius: 5px;
@@ -490,6 +485,23 @@ form button {
   background: rgb(200,200,200);
 }
 
+@media screen and (max-width: 400px) {
+  .changement button {
+    width: 33.3%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .divTrier {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .boutonTrier {
+    justify-content: space-evenly;
+  }
+}
+
 @media screen and (max-width: 1000px){
   main {
     width: 90%;
@@ -509,5 +521,11 @@ form button {
 
   .conteneur {
     width: 100%;
+  }
+
+
+  #affichageAnidex article {
+    width: 120px;
+    height: 168px;
   }
 }

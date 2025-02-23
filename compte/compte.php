@@ -11,22 +11,15 @@
     <link rel="stylesheet" href="../style/connexion.css">
     <link rel="icon" type="image/png" href="../images/logo.jpg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="../scripts/script.js" defer></script>
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/anidex.js" defer></script>
-    <script src="../scripts/script.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
         <nav>
-            <div class="image">
-                <a href="../index.php"><img src="../images/logo.png"></a>
-            </div>
-            <a href="../index.php" id="titreRouge"><h1>Zwinidle</h1></a>
-            <div class="compteIcone">
-            <a href="compte.php"><img src='../<?php echo (isset($_SESSION['LOGGED_USER'])) ?  $_SESSION['LOGGED_USER']['pfp'] :  "images/utilisateur.png"?>' alt="compte"></a>
-                <a href="compte.php" class="compteTel">Compte</a>
-            </div>
+        <?php require_once('../header.php');?>
             
         </nav>
     </header>
@@ -101,10 +94,12 @@
         
     </main>
     <img onclick="scrollToTop()" src="../images/top-page.png" alt="Top" class="top"/>
-    <?php 
-        $pageIndex = false;
-        require_once('../footer.php');
-    ?>
+    <div class='footer' id="footer">
+        <?php 
+            $pageIndex = false;
+            require('../footer.php');
+        ?>
+    </div>
     
 </body>
 </html>
