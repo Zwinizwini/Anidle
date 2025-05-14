@@ -1,4 +1,5 @@
 import { hololiveMembersData } from "./hololiveMembersData.js";
+import { viePerdu, viePleine } from "./script.js";
 
 function recupHolo(hololive) {
     return hololiveMembersData.find(member => member.nom === hololive)
@@ -56,21 +57,7 @@ function verifReponse(hololiveIpt,hololive) {
 
 }
 
-function viePleine() {
-    for (let i=0;i<10;i++) {
-        $(`[data_coeur='${i}']`).attr("src","../images/coeur-plein.png")
-    }
-}
 
-function viePerdu(tentative) {
-    console.log(tentative);
-    
-    $(`[data_coeur='${tentative}']`).attr("src","../images/coeur-vide.png")
-    $(`[data_coeur='${tentative}']`).addClass("animate__heartBeat")
-    setTimeout(() => {
-        $(`[data_coeur='${tentative}']`).removeClass("animate__heartBeat");
-    }, 1000);
-}
 
 function holoGuessr(hololive) {
     let tentative = 10

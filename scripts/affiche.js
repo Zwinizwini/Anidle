@@ -1,3 +1,5 @@
+import {recupNom,getRandomInt,viePerdu,viePleine,recupAnime} from './script.js'
+
 function pixelImage(pixelSize) {
     const src = document.querySelector(".affiche img").src
     const image = new Image();
@@ -49,48 +51,34 @@ function switchImageCanva() {
     $(".affiche img").attr("style","")
 }
 
-function viePleine() {
-    for (let i=0;i<10;i++) {
-        $(`[data_coeur='${i}']`).attr("src","../images/coeur-plein.png")
-    }
-}
-
-function viePerdu(tentative) {
-    $(`[data_coeur='${9-tentative}']`).attr("src","../images/coeur-vide.png")
-    $(`[data_coeur='${9-tentative}']`).addClass("animate__heartBeat")
-    setTimeout(() => {
-        $(`[data_coeur='${9-tentative}']`).removeClass("animate__heartBeat");
-    }, 1000);
-}
-
 function moinsFlouPixel(tentative,jeu) {
+    tentative--
     viePerdu(tentative)
-    tentative++
-    if (tentative == 7) {
+    if (tentative == 3) {
         $(`[data_coeur='${1}']`).addClass("animate__heartBeat animate__infinite")
         $(`[data_coeur='${0}']`).addClass("animate__heartBeat animate__infinite")
         $(`[data_coeur='${2}']`).addClass("animate__heartBeat animate__infinite")
     }
-    console.log("taille pix : "+Math.floor(50/tentative+1))
+    console.log("taille pix : "+Math.floor(50/(10-tentative)+1))
     switch (jeu) {
         case 'Pixel':
-            pixelImage(Math.floor(50/tentative+1))
+            pixelImage(Math.floor(50/(10-tentative)+1))
             break
         case 'Pixel-Invert':
-            pixelImage(Math.floor(50/tentative+1))
+            pixelImage(Math.floor(50/(10-tentative)+1))
             break
         case 'Flou-Invert': 
-            $(".blur").css('filter', `invert(1) blur(${15-tentative}px)`)
+            $(".blur").css('filter', `invert(1) blur(${15-(10-tentative)}px)`)
             break
         default:
-            $(".blur").css('filter', `blur(${15-tentative}px)`)
+            $(".blur").css('filter', `blur(${15-(10-tentative)}px)`)
     }
     return tentative
 }
 
 function perdu(tentative,jeu) {
-    if (tentative == 9) {
-        viePerdu(tentative)
+    if (tentative == 1) {
+        viePerdu(0)
         $(`[data_coeur='${1}']`).removeClass("animate__heartBeat animate__infinite")
         $(`[data_coeur='${0}']`).removeClass("animate__heartBeat animate__infinite")
         $(`[data_coeur='${2}']`).removeClass("animate__heartBeat animate__infinite")
@@ -102,7 +90,7 @@ function perdu(tentative,jeu) {
 
 function jeuAffiche(animeDeviner,jeu) {
     
-    let tentative = 0
+    let tentative = 10
     const imageDeviner = $(".affiche img")
     imageDeviner.attr("src",animeDeviner.img)
     switch (jeu) {

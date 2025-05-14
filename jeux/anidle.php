@@ -12,8 +12,8 @@ require_once('../mysql/connect.php');
     <link rel="stylesheet" href="../style/anidle.css">
     <link rel="stylesheet" href="../style/input-button.css">
     <link rel="icon" type="image/png" href="../images/logo.jpg" />
+    <script src="../scripts/background.js" defer></script>
     <script src="../scripts/config.js" defer></script>
-    <script src="../scripts/script.js" defer></script>
     <script src="../scripts/video.js" defer></script>
     <script type="module" src="../scripts/anidle.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">

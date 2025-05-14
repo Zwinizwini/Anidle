@@ -14,7 +14,7 @@ require_once(__DIR__ . '/mysql/connect.php');
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
     <script src="scripts/table.js" defer></script>
-    <script src="scripts/script.js" defer></script>
+    <script src="scripts/background.js" defer></script>
 </head>
 <body>
     <header>
@@ -71,8 +71,11 @@ require_once(__DIR__ . '/mysql/connect.php');
 
         <div class="menu">
             <h2>Guess</h2>
-            <a href="jeux/affiche.php">Affiche</a>
-            <a href="jeux/anidle.php">Anidle</a>
+            <a href="jeux/affiche.php" id="affiche"><img src="images/afficheFond1.png" alt="">Affiche</a>
+            <a href="jeux/anidle.php" id="anidle"><img src="images/afficheFond2.png" alt="">Anidle</a>
+            <a href="jeux/hololive.php" id="hololive"><img src="images/Hololive/hololivemember.jpg" alt="">Hololive</a>
+            <a href="jeux/hsr.php" id="hsr"><img src="images/Hsr/astralexpress.jpg" alt="">HSR</a>
+            <a href="jeux/dbd.php" id="dbd"><img src="images/Dbd/firecamp.jpg" alt="">DBD</a>
         </div>
         <!-- <a href="anidleAvecBD.php"><div class="index d-flex">Anidle avec BD</div></a> -->
         <table class="tableauScore">

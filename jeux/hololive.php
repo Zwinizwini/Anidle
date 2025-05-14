@@ -11,8 +11,7 @@ require_once('../mysql/connect.php');
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/hololive.css">
     <link rel="icon" type="image/png" href="../images/logo.jpg" />
-    <script src="../scripts/config.js" defer></script>
-    <script src="../scripts/script.js" defer></script>
+    <script src="../scripts/background.js"></script>
     <script type="module" src="../scripts/hololiveGuessr.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

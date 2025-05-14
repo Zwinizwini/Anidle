@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guessr Anime</title>
     <link rel="icon" type="image/png" href="../images/logo.jpg" />
+    <script src="../scripts/background.js" defer></script>
     <script src="../scripts/config.js" defer></script>
-    <script src="../scripts/script.js" defer></script>
-    <script src="../scripts/affiche.js" defer></script>
+    <script type="module" src="../scripts/affiche.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="../style/style.css">
