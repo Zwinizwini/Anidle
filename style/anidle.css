@@ -13,39 +13,85 @@ main {
 }
 
 
-
-td,
-th {
-    padding: 20px 10px;
-    color: white;
-    text-align: center;
-}
-
 .tableau {
-    width: 70%;
+    margin-top: 35px;
+    width: 100%;
+    max-width: 1250px;
     overflow-x: auto;
 }
 
-tr td:first-child,tr th:first-child {
-    width: 190px;
-}
-
-tr td:first-child {
-    text-align: left;
-}
-
-table {
+.tableau table {
     width: 100%;
-    min-width: 1000px;
-    border-collapse: collapse;
-    border-radius: 30px;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 1.2rem;
-    background: var(--fond-grisatre);
-    table-layout: fixed;
-    
+
 }
+
+
+th, td {
+    color: black;
+    padding: 10px 0px;
+    text-align: center;
+    border: 1px solid black;
+    height: 50px;
+    width: 200px;
+}
+
+td {
+    font-size: 18px;
+    font-weight: bold;
+    height: 70px;
+    border-radius: 10px;
+    background: var(--fond-grisatre);
+}
+
+th {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-bottom: rgba(255, 255, 255, 0.582) 2px solid;
+}
+
+.fade-in {
+    animation: fade-in 0.5s ease-in-out backwards;
+}
+
+
+.fade-in-2 {
+    animation-delay: 0.20s;
+}
+.fade-in-3 {
+    animation-delay: 0.4s;
+}
+.fade-in-4 {
+    animation-delay: 0.6s;
+}
+.fade-in-5 {
+    animation-delay: 0.8s;
+}
+.fade-in-6 {
+    animation-delay: 1s;
+}
+.fade-in-7 {
+    animation-delay: 1.2s;
+}
+.fade-in-8 {
+    animation-delay: 1.4s;
+}
+.fade-in-9 {
+    animation-delay: 1.6s;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: rotateY(90deg);
+    }
+    to {
+        /* transform: rotateY(360deg); */
+        opacity: 1;
+        transform: rotateY(0deg);
+    }
+}
+
 
 .valide {
     color: green;
@@ -255,6 +301,7 @@ input[type=checkbox] {
 input[type="range"]{
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     display: block;
     height: 8px;
     background-color: #d5d5d5;
@@ -286,6 +333,7 @@ input[type="range"]::-webkit-slider-thumb{
 }
 input[type="range"]::-moz-range-thumb{
     -webkit-appearance: none;
+    appearance: none;
     height: 25px;
     width: 12.5px;
     border-radius: 3px;
@@ -371,23 +419,7 @@ input[type="range"]:active::-ms-thumb {
 }
   
 
-@media screen and (max-width: 1500px){
-    .tableau {
-        width: 80%;
-    }
-}
 
-@media screen and (max-width: 1300px){
-    .tableau {
-        width: 90%;
-    }
-}
-
-@media screen and (max-width: 1100px){
-    .tableau {
-        width: 98%;
-    }
-}
 
 @media screen and (max-width: 1000px){
     .div70 {
@@ -395,12 +427,7 @@ input[type="range"]:active::-ms-thumb {
         align-items: center;
     }
 
-    .tableau {
-        width: 95%;
-    }
-    table {
-        font-size: 1rem;
-    }
+
 
     .indice {
         display: flex;

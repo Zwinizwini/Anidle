@@ -14,6 +14,7 @@ form input, form button, #skip {
     color: white;
     padding: 5px;
     text-align: center;
+    outline: none;
 }
 
 form input {
@@ -29,6 +30,7 @@ form button, #skip {
 
 form button:hover {
     cursor: pointer;
+    background: rgb(101, 101, 101);;
 }
 
 form input:focus {

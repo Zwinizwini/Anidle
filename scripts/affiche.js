@@ -144,7 +144,7 @@ function jeuAffiche(animeDeviner,jeu) {
     })
 
     $(".afficheSuivante").on("click", () => {
-        tentative = 0
+        tentative = 10
         $(".reponseJoueur").empty()
         $(".afficheSuivante").toggleClass("desac")
         const index = getRandomInt(DonneeAnime.length)

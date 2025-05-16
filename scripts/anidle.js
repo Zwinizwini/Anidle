@@ -45,40 +45,45 @@ function gestionValide(listeInput,animeDeviner) {
     let tbodyBalise = document.querySelector("tbody")
     let trBalsie = document.createElement("tr")
     let tr = `<tr>`
+    let index = 0
 
     
     for (const cle in listeInput) {
         if (cle != "id" && cle != "type" && cle != "img" && cle != "op") {
+            
+            index++
+            console.log(index);
+
             const valeur = listeInput[cle]
             if (typeof valeur == "string") {
                 if (animeDeviner[cle].includes(valeur)) {
-                    tr += `<td class="valide"> ${valeur}</td>`
+                    tr += `<td class="valide fade-in fade-in-${index}"> ${valeur}</td>`
                 } else {
-                    tr += `<td class="faux"> ${valeur}</td>`
+                    tr += `<td class="faux fade-in fade-in-${index}"> ${valeur}</td>`
                 }
             } else if (typeof valeur == "number") {
                     if (valeur > animeDeviner[cle]) {
-                        tr += `<td class="faux"> ${valeur} <img src="../images/fleche_bas.png"></td>`
+                        tr += `<td class="faux fade-in fade-in-${index}"> ${valeur} <img src="../images/fleche_bas.png"></td>`
                     } else if (valeur == animeDeviner[cle]) {
-                        tr += `<td class="valide"> ${valeur}</td>`
+                        tr += `<td class="valide fade-in fade-in-${index}"> ${valeur}</td>`
                     }
                     else {
-                        tr += `<td class="faux"> ${valeur} <img src="../images/fleche_haut.png"></td>`
+                        tr += `<td class="faux fade-in fade-in-${index}"> ${valeur} <img src="../images/fleche_haut.png"></td>`
                     }
             } else {
                 if (cle === "nom" && listeInput.id == animeDeviner.id) {
                     console.log(valeur[0])
-                    tr += `<td class="valide"> ${valeur[0]}</td>`
+                    tr += `<td class="valide fade-in fade-in-${index}"> ${valeur[0]}</td>`
                 } else if (cle === "nom" && !(listeInput.id == animeDeviner.id)) {
                     console.log(valeur[0])
-                    tr += `<td class="faux"> ${valeur[0]}</td>`
+                    tr += `<td class="faux fade-in fade-in-${index}"> ${valeur[0]}</td>`
                 } else {
-                tr += `<td>`
+                tr += `<td class="fade-in fade-in-${index}">`
                 valeur.forEach((genre) => {
                     if (animeDeviner[cle].includes(genre)) {
-                        tr += `<div class="valide"> ${genre}</div>`
+                        tr += `<div class="valide "> ${genre}</div>`
                     } else {
-                        tr += `<div class="faux"> ${genre}</div>`
+                        tr += `<div class="faux "> ${genre}</div>`
                     }
                 })
                 tr += `</td>`
