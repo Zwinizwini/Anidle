@@ -302,19 +302,33 @@ function anidle(animeDeviner) {
                             btnIndice[0].disabled = false
                             btnIndice[0].classList.add("fondActiver")
                             btnIndice[0].classList.remove("fondDesac")
+                            btnIndice[0].classList.add("btn-boop")
                             break
                         case 9:
                             btnIndice[1].disabled = false
                             btnIndice[1].classList.add("fondActiver")
                             btnIndice[1].classList.remove("fondDesac")
+                            btnIndice[1].classList.add("btn-boop")
                             break
                         case 14:
                             btnIndice[2].disabled = false
                             btnIndice[2].classList.add("fondActiver")
                             btnIndice[2].classList.remove("fondDesac")
+                            btnIndice[2].classList.add("btn-boop")
                             break
                     }
 
+                    $(".indice span").each(function(index) {
+                        if ($(this).text() > 0) {
+                            $(this).text($(this).text() - 1);
+                        }
+                        if ($(this).text() == 0 || $(this).text() == "") {
+                            const indice = $(this).parent().text().split(" ")[0]
+                            btnIndice[index].innerHTML = `${indice}<span></span>`
+
+                        }
+                    });
+                    
                     tentative++
                     gestionValide(animeInput,animeDeviner)
                     tentativeAfficher(tentative)
@@ -337,15 +351,19 @@ function anidle(animeDeviner) {
             zoneIndiceBalise.removeClass("desac")
             btnIndice[i].classList.remove("fondActiver")
             btnIndice[i].classList.add("fondDesac")
+            btnIndice[i].classList.remove("btn-boop")
             btnIndice[i].disabled = true
             switch (i) {
                 case 0:
+                    $('.perso p').css("visibility", "visible")
                     recupPerso(animeDeviner.id)
                     break
                 case 1:
+                    $('.image-indice').css("visibility", "visible")
                     recupImage(animeDeviner.id,1)
                     break
                 case 2:
+                    $('.controle-video').css("visibility", "visible")
                     recupURLTrailer(animeDeviner.op)
                     
             }
@@ -389,8 +407,11 @@ function restartGuess() {
         btn.disabled = true
         btn.classList.remove("fondActiver")
         btn.classList.add("fondDesac")
+        btn.classList.remove("btn-boop")
     })
-
+    btnIndice[0].innerHTML = '<p>Personnage : <br><span>7</span> Guess</p>'
+    btnIndice[1].innerHTML = '<p>Affiche : <br><span>10</span> Guess</p>'
+    btnIndice[2].innerHTML = '<p>Opening : <br><span>15</span> Guess</p>'
     let indexRan = getRandomInt(listeAnime.length)
     let animeDeviner = listeAnime[indexRan]
     recupImage(animeDeviner.id,0)

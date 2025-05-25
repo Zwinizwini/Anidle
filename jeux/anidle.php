@@ -10,9 +10,7 @@ require_once('../mysql/connect.php');
     <title>Guessr Anime</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/anidle.css">
-    <link rel="stylesheet" href="../style/input-button.css">
     <link rel="icon" type="image/png" href="../images/logo.jpg" />
-    <script src="../scripts/background.js" defer></script>
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/video.js" defer></script>
     <script type="module" src="../scripts/anidle.js" defer></script>
@@ -89,20 +87,29 @@ require_once('../mysql/connect.php');
                     </div>
                     
                 </div>
-            </div>
-            <div class="indice">
-                <button class="photo fondDesac">Personnage</button>
-                <button class="photo fondDesac">Affiche</button>
-                <button class="photo fondDesac">Opening</button>
-            </div>
-            <h2>Guess <span>0</span> / 20</h2>
+            </div><h2>Guess <span>0</span> / 20</h2>
             <div class="score">
-                <p>Max serie : <span id="score">0</span>
+                <p>Serie en cours : <span id="score">0</span>
             </div>
+            
+            
             <form class="proposition">
-                <input type="text" id="iptJoueur" name="iptJoueur" placeholder="Entrer un anime" autofocus>
+                <div><input type="text" id="iptJoueur" name="iptJoueur" placeholder="Entrer un anime" ></div>
                 <button id="btnValid">Valider</button>
             </form>
+            <div class="indice">
+                <button class="photo fondDesac"><p>Personnage : <br><span>7</span> Guess</p></button>
+                <button class="photo fondDesac"><p>Affiche : <br><span>10</span> Guess</p></button>
+                <button class="photo fondDesac"><p>Opening : <br><span>15</span> Guess</p></button>
+            </div>
+            <!-- <script>
+                $('#iptJoueur').on('focus', function() {
+                    $('#btnValid').addClass('glow');
+                })
+                $('#iptJoueur').on('focusout', function() {
+                    $('#btnValid').removeClass('glow');
+                })
+            </script> -->
         </div>
         
         <p class="faux" id="animeDejaMis"></p>

@@ -239,7 +239,14 @@ a {
 
 .menu a:hover {
     transform: scale(1.1);
-    transition: all ease-in-out 0.4s;
+    transition: all ease-in-out 0.2s;
+}
+
+.menu a p {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 0px 10px;
 }
 
 

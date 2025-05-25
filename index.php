@@ -35,13 +35,6 @@ require_once(__DIR__ . '/mysql/connect.php');
             </div>
             <script>
                 const menuFond = document.querySelector('.menuFond')
-                console.log(menuFond);
-                console.log(document.querySelector('.btn'));
-                console.log(document.querySelector('.hautMenu'));
-                console.log(document.querySelector('.milieu'));
-                console.log(document.querySelector('.basMenu'));
-                console.log(document.querySelector('.menuDeroulant'));
-                console.log(document.querySelector('.footer'));
                 function menu() {
                     document.querySelector('.hautMenu').classList.toggle('hautTransform')
                     document.querySelector('.milieu').classList.toggle('milieuTransform')
@@ -71,11 +64,11 @@ require_once(__DIR__ . '/mysql/connect.php');
 
         <div class="menu">
             <h2>Guess</h2>
-            <a href="jeux/affiche.php" id="affiche"><img src="images/afficheFond1.png" alt="">Affiche</a>
-            <a href="jeux/anidle.php" id="anidle"><img src="images/afficheFond2.png" alt="">Anidle</a>
-            <a href="jeux/hololive.php" id="hololive"><img src="images/Hololive/hololivemember.jpg" alt="">Hololive</a>
-            <a href="jeux/hsr.php" id="hsr"><img src="images/Hsr/astralexpress.jpg" alt="">HSR</a>
-            <a href="jeux/dbd.php" id="dbd"><img src="images/Dbd/firecamp.jpg" alt="">DBD</a>
+            <a href="jeux/affiche.php" id="affiche"><img src="images/afficheFond1.png" alt=""><p>Affiche</p></a>
+            <a href="jeux/anidle.php" id="anidle"><img src="images/afficheFond2.png" alt=""><p>Anidle</p></a>
+            <a href="jeux/hololive.php" id="hololive"><img src="images/Hololive/hololivemember.jpg" alt=""><p>Hololive</p></a>
+            <a href="jeux/hsr.php" id="hsr"><img src="images/Hsr/astralexpress.jpg" alt=""><p>HSR</p></a>
+            <a href="jeux/dbd.php" id="dbd"><img src="images/Dbd/firecamp.jpg" alt=""><p>DBD</p></a>
         </div>
         <!-- <a href="anidleAvecBD.php"><div class="index d-flex">Anidle avec BD</div></a> -->
         <table class="tableauScore">
