@@ -102,6 +102,83 @@ main {
     color: white;
 }
 
+#pokeReponse img {
+    border: 5px solid #2d6ab4;
+}
+#pokeReponse button {
+    border: 2px solid #2d6ab4;
+    position: relative;
+    overflow: hidden;
+}
+#pokeReponse button::before {
+    content:'';
+    width: 0;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #feca00;
+}
+#pokeReponse button:hover::before {
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+}
+#pokeReponse button:hover {
+    z-index: 0;
+    color: black;
+    background-color: white;
+}
+
+#pokeball {
+    border: none;
+    background: none;
+}
+#pokeball img {
+    width: 100%;
+}
+
+#pokeform input {
+    border: 5px solid #2d6ab4;
+}
+
+.type {
+    width: 45px;
+    position: relative;
+    margin: auto;
+
+}
+.type img {
+    width: 100%;
+    border-radius: 50%;
+}
+.type:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}
+.type:hover:after {
+    content: attr(aria-type);  /* on affiche aria-label */
+    position: absolute;
+    top: -2.4em;
+    left: 50%;
+	transform: translateX(-50%); /* on centre horizontalement  */
+    z-index: 1; /* pour s'afficher au dessus des éléments en position relative */
+    white-space: nowrap;  /* on interdit le retour à la ligne*/
+    padding: 5px 14px;
+    background: #2d6ab4;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1.2rem;
+}
+[aria-type]:hover:before {
+    content: "▼";
+    position: absolute;
+    top: -1em;
+	left: 50%;
+	transform: translateX(-50%); /* on centre horizontalement  */
+    font-size: 20px;
+    color: #2d6ab4;
+}
 
 .tableau {
     margin-top: 35px;
@@ -113,8 +190,8 @@ main {
 
 .tableau table {
     width: 100%;
-
 }
+
 
 
 th, td {

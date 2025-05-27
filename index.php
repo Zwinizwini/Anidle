@@ -69,6 +69,7 @@ require_once(__DIR__ . '/mysql/connect.php');
             <a href="jeux/hololive.php" id="hololive"><img src="images/Hololive/hololivemember.jpg" alt=""><p>Hololive</p></a>
             <a href="jeux/hsr.php" id="hsr"><img src="images/Hsr/astralexpress.jpg" alt=""><p>HSR</p></a>
             <a href="jeux/dbd.php" id="dbd"><img src="images/Dbd/firecamp.jpg" alt=""><p>DBD</p></a>
+            <a href="jeux/pokemon.php" id="dbd"><img src="images/pokemon2.jpg" alt=""><p>Pokémon</p></a>
         </div>
         <!-- <a href="anidleAvecBD.php"><div class="index d-flex">Anidle avec BD</div></a> -->
         <table class="tableauScore">
