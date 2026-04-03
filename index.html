@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessr Anime</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" type="image/png" href="images/logo.jpg" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+    <script src="scripts/table.js" defer></script>
+    <script src="scripts/background.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="image">
+                <a href="index.php"><img src="images/logo.png"></a>
+            </div>
+            <div class="btn Tel">
+                <div class="hautMenu"></div>
+                <div class="milieu"></div>
+                <div class="basMenu"></div>
+            </div>  
+            <div class="menuFond desac">
+            </div>
+            <div class="menuDeroulant">
+                <a href="index.php" class='lienDeroulant'>Accueil</a>
+            </div>
+            <script>
+                const menuFond = document.querySelector('.menuFond')
+                function menu() {
+                    document.querySelector('.hautMenu').classList.toggle('hautTransform')
+                    document.querySelector('.milieu').classList.toggle('milieuTransform')
+                    document.querySelector('.basMenu').classList.toggle('basTransform')
+                    document.querySelector('.menuDeroulant').classList.toggle('menuEtendu')
+                    document.querySelector('.footer').classList.toggle('opacity')
+                    menuFond.classList.toggle('desac')
+                }
+                document.querySelector('.btn').addEventListener('click', () => {                    
+                    menu()
+                })
+                menuFond.addEventListener('click', () => {
+                    menu()
+                })
+            </script>
+            <a href="index.php" id="titreRouge"><h1>Zwinidle</h1></a>            
+        </nav>
+    </header>
+
+    <main class="d-flex" id="index">
+        
+
+        <div class="menu">
+            <h2>Guess</h2>
+            <a href="jeux/affiche.html" id="affiche"><img src="images/afficheFond1.png" alt=""><p>Affiche</p></a>
+            <a href="jeux/anidle.html" id="anidle"><img src="images/afficheFond2.png" alt=""><p>Anidle</p></a>
+            <a href="jeux/hololive.html" id="hololive"><img src="images/Hololive/hololivemember.jpg" alt=""><p>Hololive</p></a>
+            <a href="jeux/hsr.html" id="hsr"><img src="images/Hsr/astralexpress.jpg" alt=""><p>HSR</p></a>
+            <a href="jeux/dbd.html" id="dbd"><img src="images/Dbd/firecamp.jpg" alt=""><p>DBD</p></a>
+            <a href="jeux/pokemon.html" id="pokemon"><img src="images/pokemon2.jpg" alt=""><p>Pokémon</p></a>
+        </div>      
+        
+    </main>
+           
+</body>
+</html>

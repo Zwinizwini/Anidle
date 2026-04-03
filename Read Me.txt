@@ -1,0 +1,3 @@
+Pour lancer le site t'as juste à ouvrir le fichier index.html dans ton navigateur (double clique dessus).
+
+Si tu veux, tu peux créer un raccourcis que tu met ensuite sur ton bureau pour y acceder direct.

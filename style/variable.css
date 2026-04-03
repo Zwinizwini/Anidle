@@ -1,0 +1,10 @@
+:root {
+    --background-noir-profond: rgb(20, 20, 20);
+    --ecriture-rouge: rgb(163, 16, 16);
+    --fond-noir: rgb(30, 30, 30);
+    --rouge-faux: rgb(255, 58, 58);
+    --fond-bouton-actif: rgb(197, 47, 47);
+    --fond-bouton-actif-hover: rgba(197, 47, 47, 0.733);
+    --fond-bouton-desac: rgb(68, 16, 16);
+    --fond-grisatre: rgb(41, 41, 41);
+}
